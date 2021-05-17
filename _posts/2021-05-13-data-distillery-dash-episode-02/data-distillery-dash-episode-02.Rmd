@@ -22,7 +22,7 @@ I take a research topic at random^[Yikes] or dataset I've never seen^[double yik
 
 ## What Data Are We Using Today?
 
-We're going to predict subjective feelings of being ready to go back to work at the end of an online randomized clinical trial!^[Or at least make a good start, I don't think there's any way I'll finish in one 2 hour chunk] I learned about this data from [a paper by Dr. Nick Jacobson](http://www.nicholasjacobson.com/files/PDFs/Jacobson%20&%20Nemesure,%202020.pdf){target="_blank"} and the data is from [this paper.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176513){target="_blank"} <br>
+We're going to predict subjective feelings of being ready to go back to work at the end of an online randomized clinical trial!^[Or at least make a good start, I don't think there's any way I'll finish in one 2 hour chunk] I learned about this data from [a paper by Dr. Nick Jacobson](http://www.nicholasjacobson.com/files/PDFs/Jacobson%20&%20Nemesure,%202020.pdf){target="_blank"} and the data is from [this paper.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176513){target="_blank"}<br>
 <br>
 This is mostly so I can practice setting up a predictive modeling pipeline that allows us to predict who would benefit more from one condition or another in a clinical trial. Even in situations like this where the control group seems minimal, they can actually have some therapeutic benefit. In fact, sometimes people seem to respond better to what we've described as psychological placebos compared to what we've described as active treatments!^[Or at least respond just as well] <br>
 <br>
