@@ -1,0 +1,324 @@
+---
+title: "Data Distillery Dash Episode 01"
+description: |
+  A short description of the post.
+author:
+  - name: Michael Mullarkey, PhD (Click to return to my website)
+    url: https://mcmullarkey.github.io
+date: 05-06-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What Is Data Distillery Dash?
+
+I take a research topic at random^[Yikes], wrangle the data, I create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](twitch.tv/mcmullarkey){target="_blank"}
+
+## We Let R Choose the Research Topic!
+
+Originally I was thinking of rolling a die, but since R can choose, we let it!
+
+```{r choosing the topics, echo = TRUE}
+
+topics <- c("EFG vs. TS%","Off Rb% vs. Def Rb%","Turnover Chaos")
+
+set.seed(23)
+topic_is <- sample(topics, 1)
+topic_is
+
+```
+
+## What's the Research Topic?
+
+Alright, so based off of this we decided to predict the difference between true shooting percentage^[which takes into account free throw percentage along with giving people more credit for making 3s] and effective field goal percentage^[which gives people more credit for making 3s but doesn't give people credit for free throws] for NBA players from 1999-2019.^[shout out to the nbastatR package for making getting that data easy] To make things more interesting/not overfit completely, we dropped any variables related to free throw shooting. We also dropped true shooting percentage and effective field goal percentage themselves, since those together would be redundant with our outcome of interest.
+\n
+First, let's load in all the packages we'll use during the livestream^[or almost all of them!]
+
+```{r, echo = TRUE}
+library(nbastatR)
+library(tidyverse)
+library(tidymodels)
+library(doMC)
+library(tictoc)
+library(future)
+library(janitor)
+library(skimr)
+
+```
+
+And now let's use nbastatR to load in the advanced statistics and the total stats for all NBA players over ~20 years.
+
+```{r, echo = TRUE}
+tic()
+plan(multisession)
+all_bref <- bref_players_stats(seasons = 2000:2019, tables = c("advanced","totals"), widen = TRUE, assign_to_environment = TRUE)
+toc()
+
+```
+## Here Was My Initial Frantic Plan
+
+Do data wrangling (Create target variable) <br>
+<br>
+Get minimal model pipeline (Includes EDA) <br>
+<br>
+Go back and iterate on modeling <br>
+<br>
+TWIST^[Just kidding, tune in next time to see if I remember to do it!] <br>
+<br>
+Making more plots if we have time, and building out the rest of the blog post
+
+```{r initial wrangling}
+
+all_bref <- all_bref %>% 
+  clean_names()
+
+# skim(all_bref)
+# 
+# glimpse(all_bref)
+
+```
+
+```{r}
+
+all_bref_wrang <- all_bref %>% 
+  mutate(ts_minus_efg = pct_true_shooting - pct_efg) %>% 
+  filter(minutes >= 500)
+```
+
+## Why Bother with This Question?
+
+Even though true shooting percentage and effective field goal percentage are similar, looking at their differences might be informative. The main difference between the two, is true shooting percentage takes into account free throw percentage, while effective field goal percentage does not. <br>
+<br>
+Still, the metrics are correlated r = 0.92 in our data!^[among players who played at least 500 minutes in a given season, total sample size across 20 years of 6,691 players] So the cases where they differ by a lot might be rare, but could be really interesting.
+
+```{r, echo = TRUE}
+library(corrr)
+
+all_bref_wrang %>%
+  dplyr::select(pct_true_shooting, pct_efg) %>% 
+  correlate()
+
+```
+
+## Who Has the Biggest Gaps Between True Shooting Percentage and Effective Field Goal Percentage?
+
+We can also look at who has the biggest gaps between true shooting percentage and effective field goal percentage. <br>
+<br>
+Folks who have a true shooting percentage much higher than their effective field goal percentage^[positive values by this metric] are much better free throw shooters than they are shooting from the field. Folks who have a much higher effective field goal percentage than true shooting percentage^[negative values by this metric] are much worse free throw shooters compared to how they shoot from the field. <br>
+<br>
+It's interesting to me that while the data goes through the 2018-2019 season, none of the top 10 discrepancies happen after the 2011-2012 season. Could just be chance for sure, but might be worth investigating further!
+
+```{r}
+
+all_bref_wrang %>% 
+  arrange(desc(ts_minus_efg)) %>% 
+  dplyr::slice(1:10) %>% 
+  dplyr::select(name_player, ts_minus_efg, slug_season)
+
+```
+
+Also, yikes is Deandre Jordan terrible at shooting free throws relative to how he shoots from the field! I know we already knew that, but still. He takes up the top 4 spots on the "true shooting percentage lower than effective field goal percentage" list, and 6 of the top 10 overall. 
+
+```{r}
+
+all_bref_wrang %>% 
+  arrange(ts_minus_efg) %>% 
+  dplyr::slice(1:10) %>% 
+  dplyr::select(name_player, ts_minus_efg, slug_season)
+
+```
+
+## Is The Outcome Distributed in A Super Wonky Way? 
+
+Overall though, the difference between true shooting percentage and effective field goal percentage seems pretty normally distributed.
+
+```{r, echo = TRUE}
+
+all_bref_wrang %>% 
+  na.omit() %>% 
+  ggplot(aes(x = ts_minus_efg)) + 
+  labs(x = "TS - EFG") +
+  geom_histogram(alpha = 0.7)
+
+```
+
+# Some EDA + Modeling Time
+
+I then created a minimal modeling pipeline with the tidymodels framework! Shout out to Max Kuhn and Julia Silge + others at RStudio forever. <br>
+<br>
+I also split the data into training and testing, though this post will only look at the model performance (via resampling) in the training data.
+
+```{r minimal modeling pipeline, echo = TRUE}
+
+bref_pred <- all_bref_wrang %>% 
+  dplyr::select(name_player, ts_minus_efg, c(minutes:pts_totals)) %>% 
+  dplyr::select(-ftm_totals, -fta_totals,-pct_ft_rate,-pct_ft, -pct_true_shooting, -pct_efg)
+
+# glimpse(bref_pred)
+
+# It's SPLIT time
+
+set.seed(33)
+bref_split <- initial_split(bref_pred, prop = 4/5, strata = ts_minus_efg) 
+
+bref_train <- training(bref_split)
+bref_test <- testing(bref_split)
+
+```
+
+I originally wrote code to look at all the univariate associations between the predictors (Basketball Reference Data for all the players over the past 20 years) and the outcome in the training data. This isn't to do any screening, but helps me get a sense for how well a simple linear model might do. For example, if there were a bunch of strong positive/negative linear associations with the outcome, the linear regression might beat more sophisticated, compuationally intensive models. That happened a little bit here (spoilers!) and here's an example of one plot.^[The commented out code creates all the plots]
+
+```{r visualizing univariate associations, echo = TRUE}
+
+# preds <- bref_train %>% 
+#   dplyr::select(where(is.numeric)) %>% 
+#   names()
+# 
+# map(preds, ~{
+#   
+#   bref_train %>% 
+#     ggplot(aes(x = .data[[.x]], y = ts_minus_efg)) +
+#     geom_point(alpha = 0.2, position = "jitter") +
+#     geom_smooth(method = lm, formula = y ~ x, se = FALSE, col = "red")
+#   
+# })
+
+bref_train %>% 
+    ggplot(aes(x = minutes, y = ts_minus_efg)) +
+    geom_point(alpha = 0.2, position = "jitter") +
+    geom_smooth(method = lm, formula = y ~ x, se = FALSE, col = "red") +
+    labs(y = "True Shooting % - EFG%")
+
+```
+
+Here come the recipes! Nope, the food I make isn't tasty, but at least this recipe can take care of any missing data or near-zero variance predictors. I also decided to train a no-frills linear regression along with an out of the box boosted tree model.^[I know workflowsets exist, but I haven't worked with them yet! Maybe next time...]
+
+```{r, echo = TRUE}
+
+ts_efg_rec <- recipe(ts_minus_efg ~ ., data = bref_train) %>% 
+  update_role(name_player, new_role = "id") %>% 
+  step_impute_knn(all_numeric(), -all_outcomes()) %>% 
+  step_normalize(all_numeric(), -all_outcomes()) %>% 
+  step_nzv(all_numeric(),-all_outcomes())
+
+ts_efg_rec %>% 
+  prep(verbose = TRUE) %>% 
+  bake(new_data = bref_train)
+
+# It's peanut butter model time
+
+lm_mod <- linear_reg() %>% 
+  set_engine("lm")
+
+xg_mod <- boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("regression")
+
+# Working hard or harding workflowing
+
+rec_list <- list(ts_efg_rec, ts_efg_rec)
+
+mod_list <- list(lm_mod, xg_mod)
+
+base_wfs <- map2(rec_list, mod_list, ~{
+  
+  wf <-
+    workflow() %>% 
+    add_recipe(.x) %>% 
+    add_model(.y)
+  
+})
+
+data_list <- list(bref_train, bref_train)
+
+base_one <- map2(base_wfs, data_list, ~{
+  
+  tic()
+  wf_fit <- fit(.x, data = .y)
+  toc()
+  wf_fit
+  
+})
+  
+
+```
+
+## Evaluting the Models Using 10-Fold Cross-Validation
+
+Then I evaluated both models using [10 fold cross-validation](https://www.openml.org/a/estimation-procedures/7) to make sure I'm not overfitting too much.^[Yes, I know there's some controversey over how much k-fold cross-validation helps with that, but I'm doing what I know how to do!]
+
+```{r cross validate, echo = TRUE}
+
+# Resampling time!!
+
+base_mod_rs <- map2(base_wfs, data_list, ~{
+  
+  registerDoMC(cores = 7)
+  
+  set.seed(33)
+  folds <- vfold_cv(.y, v = 10, repeats = 10, strata = ts_minus_efg)
+  keep_pred <- control_resamples(save_pred = TRUE)
+  tic()
+  set.seed(33)
+  fit_rs <-
+    .x %>% 
+    fit_resamples(folds, control = keep_pred)
+  toc()
+  fit_rs
+  
+})
+
+```
+
+## How Did the Models Do?
+
+Both models did about the same as one another according to RMSE! That would make me prefere the simpler linear model, though I'm 100% sure these models could be improved. If I had more time, I would have done some tunining of the xgboost model, done some more visualizations to assist with feature engineering, and maybe even created some spicy memes.^[shout out to Tony on Sliced, a competitive data science stream <twitch.tv/nickwan_datasci>]
+
+```{r, echo = TRUE}
+
+base_metrics <- map(base_mod_rs, ~{
+  
+  .x %>% 
+    collect_metrics(summarize = TRUE)
+  
+}) %>% 
+  print()
+
+```
+
+```{r, echo = TRUE}
+
+base_preds <- map(base_mod_rs, ~{
+  
+  .x %>% 
+    collect_predictions(summarize = TRUE)
+  
+}) %>% 
+  print()
+
+```
+
+We see the predictions primarily break down at the extreme ends of each distribution, though the boosted tree model starts breaking down even before then.
+
+```{r visualizing how well the predictions are working, echo = TRUE}
+
+map(base_preds, ~{
+  
+  .x %>% 
+    ggplot(aes(x = .pred, y = ts_minus_efg)) +
+    geom_point(alpha = 0.2, position = "jitter")
+  
+}) %>% 
+  print()
+
+```
+
+## Final Thoughts
+
+This was really fun! It came down to the wire for me to finish this post, but I had an absolute blast. I'm looking forward to doing this again. If you enjoyed this, [come follow me on Twitch](twitch.tv/mcmullarkey)

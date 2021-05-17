@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Michael Mullarkey's Blog",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-05-17T10:21:25-04:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

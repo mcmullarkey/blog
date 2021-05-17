@@ -1,0 +1,274 @@
+---
+title: "Data Distillery Dash Episode 02"
+description: |
+  The start of a prediction pipeline for psychological interventions.
+author:
+  - name: Michael Mullarkey, PhD (Click to return to my website)
+    url: https://mcmullarkey.github.io
+date: 05-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+## What Is Data Distillery Dash?
+
+I take a research topic at random^[Yikes] or dataset I've never seen^[double yikes], wrangle the data, create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](twitch.tv/mcmullarkey){target="_blank"}
+
+## What Data Are We Using Today?
+
+We're going to predict subjective feelings of being ready to go back to work at the end of an online randomized clinical trial!^[Or at least make a good start, I don't think there's any way I'll finish in one 2 hour chunk] I learned about this data from [a paper by Dr. Nick Jacobson](http://www.nicholasjacobson.com/files/PDFs/Jacobson%20&%20Nemesure,%202020.pdf){target="_blank"} and the data is from [this paper.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176513){target="_blank"} <br>
+<br>
+This is mostly so I can practice setting up a predictive modeling pipeline that allows us to predict who would benefit more from one condition or another in a clinical trial. Even in situations like this where the control group seems minimal, they can actually have some therapeutic benefit. In fact, sometimes people seem to respond better to what we've described as psychological placebos compared to what we've described as active treatments!^[Or at least respond just as well] <br>
+<br>
+Let's start with what we need to do for any predictive modeling pipleline: data cleaning/munging! This is all the more important here because the data was stored in a .sav SPSS data format. This means we need to read_sav from the haven package to read the data in, and to get a sense of what the variables actually are we use the view_df function from the sjPlot package. <br>
+<br>
+I also decided to not use any of the non-collected at baseline variables in this particular modeling pipeline. Why? Right now I'm most interested in better matching people to treatments before they start. I would want to use the data over time if I was more interested in trying to tailor the treatment as it was being delivered. Even though it might not look like much, cleaning/munging the data (especially since I'd never seen it before!) took a lot of the time during this stream.
+
+```{r}
+
+library(haven)
+library(tidyverse)
+library(tidymodels)
+library(janitor)
+
+data <- read_sav("online_rct.sav") %>% 
+  clean_names()
+
+# glimpse(data)
+
+library(sjPlot)
+
+view_df(data)
+
+data_init <- data %>%
+  rename(cond = gruppenart) %>% 
+  dplyr::select(-arbeitsunf,
+                -ends_with("_t1"), -ends_with("_t2"),
+                -ends_with("t1"), -ends_with("t2"),
+                -ends_with("1"),-ends_with("2"),
+                -ends_with("_t3"),
+                -ends_with("t3"),
+                -ends_with("3"),
+                -login, -tn_blog,
+                -blogs, -zufges_t2_dichotom) %>% 
+  glimpse()
+
+# Pull out fake t1 variables that are actually at baseline
+
+outcome <- data %>% 
+  dplyr::select(spe_sum_t3) # %>% 
+  # glimpse()
+
+data_updt <- data_init %>% 
+  bind_cols(outcome) %>% 
+   mutate(across(
+    c(sibar1at0:schulab, imputation,cond,sibar_risk_di),
+    as.factor
+  )) %>% 
+  filter(imputation == "0" & !is.na(spe_sum_t3)) %>%
+  mutate(id = row_number()) %>% 
+  relocate(id, everything()) %>% 
+  glimpse()
+
+library(skimr)
+# skim(data_updt)
+
+```
+
+For reasons I'll go into more in a subsequent post, I want to create predictions separately for folks in the intervention group and folks in the control group. The short version of why: I want to be able to predict how well I would expect people to respond not just to the intervention they actually received, but how well the model thinks they would have done if they had received the other intervention. Building separate models by treatment condition isn't the only way to do this, but it seems like the cleanest/least likely to lead to data leakage that I can think of right now^[I'm looking forward to continuing to learn more about this area and might change my mind!] <br>
+<br>
+On top of that, I'll need to test whether those hypothetical predictions actually generalize to hold out data. So, we need to hold out at least some folks from both intervention groups to ultimately test whether our predictions about the "optimal intervention" are any good. If I could turn back time, I would just use the "initial_split" argument from the rsample package within tidymodels to create the test sets for both the intervention and control groups. That's primarily the case because I'm not 100% sure this is reproducible and I'm not stratifying by the outcome^[With the 2 hour time limit I didn't have time to re-write the code!] 
+
+```{r preprocessing creating test set}
+
+# Breaking out the predictions into the separate groups
+
+data_intv_init <- data_updt %>% 
+  filter(cond == "2") %>% 
+  as.data.frame() # %>% 
+  #glimpse()
+
+data_ctrl_init <- data_updt %>% 
+  filter(cond == "1") %>% 
+  as.data.frame() # %>% 
+  #glimpse()
+
+# Pulling out folks for test set later
+
+test_intv <- data_intv_init %>% 
+  slice_sample(n = 40)
+
+data_intv <- data_intv_init %>% 
+  anti_join(test_intv, by = "id") #%>% 
+  #glimpse()
+
+test_ctrl <- data_ctrl_init %>% 
+  slice_sample(n = 40)
+
+data_ctrl <- data_ctrl_init %>% 
+  anti_join(test_ctrl, by = "id") #%>% 
+  #glimpse()
+
+
+```
+
+Then I used the recipes package to preprocess the data! I wanted to remove imputation (which didn't vary/wasn't relevant), designate id as an id variable rather than a predictor, one hot encode the categorical variables^[like dummy coding, but everything gets its own set of codes plus it doesn't sound vaguely ableist], excluded near-zero variance predictors, normalized all predictors, and imputed any missing data in predictors using k-nearest neighbors. <br>
+<br>
+I then set up a tidymodels workflow using an out of the box xgboost model^[no time for tuning in Data Distillery Dash!] and made my predictions for the intervention group first.
+
+```{r preprocessing and machine learning intevention group}
+
+intv_rec <-
+  recipe(spe_sum_t3 ~ ., data = data_intv) %>%
+  step_rm(imputation) %>% 
+  update_role(id, new_role = "id") %>% 
+  step_other(all_nominal_predictors()) %>% 
+  step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
+  step_nzv(all_predictors()) %>% 
+  step_normalize(all_predictors()) %>% 
+  step_impute_knn(all_predictors())
+
+# Testing the recipe to make sure it produces data
+
+intv_rec %>% 
+  prep(verbose = TRUE) %>% 
+  bake(new_data = NULL) # %>% 
+  #skim()
+
+# Create a model
+
+xg_mod <- boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("regression")
+
+# Creating a workflow
+
+xg_wf <-
+  workflow() %>% 
+  add_recipe(intv_rec) %>% 
+  add_model(xg_mod)
+
+```
+
+```{r run a cross validated model}
+
+intv_folds <- vfold_cv(data_intv, v = 5, repeats = 5, strata = spe_sum_t3)
+
+keep_pred <- control_resamples(save_pred = TRUE)
+
+library(tictoc)
+tic()
+set.seed(33)
+xg_rs <-
+  xg_wf %>% 
+  fit_resamples(intv_folds, control = keep_pred)
+toc()
+
+```
+Overall we predictions that aren't terribly far off from the predictions of changes in anxiety and depression from Nick's original paper (which used an ensemble model stacked on a bunch of base learners). We can't make an apples to oranges comparison since he and his co-author were predicting different outcomes, but at least I'm not wildly off from where they were.
+
+```{r}
+
+xg_rs %>% 
+  collect_metrics(summarize = TRUE)
+
+r2_intv <- xg_rs %>% 
+  collect_metrics(summarize = TRUE) %>% 
+  filter(str_detect(.metric, "rsq") == TRUE) %>% 
+  dplyr::select(mean) %>% 
+  deframe() 
+
+sqrt(r2_intv)
+
+intv_preds <- xg_rs %>% 
+  collect_predictions(summarize = TRUE)
+
+# In order to get predictions in the placebo group I have to fit a workflow first
+
+# fit_workflow <- fit(xg_wf, data_ctrl)
+
+
+```
+
+I then do the same preprocessing and model fitting for the control group!
+
+```{r preprocessing and machine learning control group}
+
+ctrl_rec <-
+  recipe(spe_sum_t3 ~ ., data = data_ctrl) %>%
+  step_rm(imputation) %>% 
+  update_role(id, new_role = "id") %>% 
+  step_other(all_nominal_predictors()) %>% 
+  step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
+  step_nzv(all_predictors()) %>% 
+  step_normalize(all_predictors()) %>% 
+  step_impute_knn(all_predictors())
+
+# Testing the recipe to make sure it produces data
+
+ctrl_rec %>% 
+  prep(verbose = TRUE) %>% 
+  bake(new_data = NULL) #%>% 
+  # skim()
+
+# Create a model
+
+xg_mod <- boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("regression")
+
+# Creating a workflow
+
+xg_wf_ctrl <-
+  workflow() %>% 
+  add_recipe(ctrl_rec) %>% 
+  add_model(xg_mod)
+
+```
+
+```{r run a cross validated model control group}
+
+ctrl_folds <- vfold_cv(data_ctrl, v = 5, repeats = 5, strata = spe_sum_t3)
+
+keep_pred <- control_resamples(save_pred = TRUE)
+
+library(tictoc)
+tic()
+set.seed(33)
+xg_rs_ctrl <-
+  xg_wf_ctrl %>% 
+  fit_resamples(ctrl_folds, control = keep_pred)
+toc()
+
+```
+Overall the predictions for the control group aren't quite as good, but we're still doing ok relative to the original predictions on other kinds of outcomes from Nick's paper.
+
+```{r}
+
+xg_rs_ctrl %>% 
+  collect_metrics(summarize = TRUE)
+
+r2_ctrl <- xg_rs_ctrl %>% 
+  collect_metrics(summarize = TRUE) %>% 
+  filter(str_detect(.metric, "rsq") == TRUE) %>% 
+  dplyr::select(mean) %>% 
+  deframe() 
+
+sqrt(r2_ctrl)
+
+ctrl_preds <- xg_rs_ctrl %>% 
+  collect_predictions(summarize = TRUE)
+
+```
+
+## What We'll Get To in Part 2
+
+In a non-Dash post, I'll write a part 2 of this dataset/analysis where I finish out the modeling process. <br>
+<br>
+So now, we need to use these models to predict how well we think folks would do if they had ended up in the opposite intervention (since we already have predictions of how they would do in the intervention they actually got). Once we have those estimates, we'll be able to see if folks in a hold out sample who we predict would benefit more from one intervention compared to another actually do!

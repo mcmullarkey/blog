@@ -1,0 +1,16 @@
+name: "Michael Mullarkey"
+title: "Michael Mullarkey's Blog"
+description: |
+  Michael Mullarkey's Blog
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: https://mcmullarkey.github.io/
+    - text: "Resume"
+      href: https://mcmullarkey.github.io/resume_markdown.pdf
+    - text: "Consulting"
+      href: https://mcmullarkey.github.io/consulting.html
+    - text: "Blog"
+      href: index.html
+output: distill::distill_article
