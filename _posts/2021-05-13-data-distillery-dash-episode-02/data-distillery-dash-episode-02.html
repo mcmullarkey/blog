@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["online_rct.sav"]}
+  {"type":"character","attributes":{},"value":["data-distillery-dash-episode-02_files/anchor-4.2.2/anchor.min.js","data-distillery-dash-episode-02_files/bowser-1.9.3/bowser.min.js","data-distillery-dash-episode-02_files/distill-2.2.21/template.v2.js","data-distillery-dash-episode-02_files/header-attrs-2.7/header-attrs.js","data-distillery-dash-episode-02_files/jquery-1.11.3/jquery.min.js","data-distillery-dash-episode-02_files/popper-2.6.0/popper.min.js","data-distillery-dash-episode-02_files/tippy-6.2.7/tippy-bundle.umd.min.js","data-distillery-dash-episode-02_files/tippy-6.2.7/tippy-light-border.css","data-distillery-dash-episode-02_files/tippy-6.2.7/tippy.css","data-distillery-dash-episode-02_files/tippy-6.2.7/tippy.umd.min.js","data-distillery-dash-episode-02_files/webcomponents-2.0.0/webcomponents.js","online_rct.sav"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1480,7 +1480,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="what-is-data-distillery-dash">What Is Data Distillery Dash?</h2>
 <p>I take a research topic at random<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> or dataset I’ve never seen<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, wrangle the data, create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST <a href="twitch.tv/mcmullarkey" target="_blank">here.</a></p>
 <h2 id="what-data-are-we-using-today">What Data Are We Using Today?</h2>
-<p>We’re going to predict subjective feelings of being ready to go back to work at the end of an online randomized clinical trial!<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> I learned about this data from <a href="http://www.nicholasjacobson.com/files/PDFs/Jacobson%20&amp;%20Nemesure,%202020.pdf">a paper by Dr. Nick Jacobson</a>target="_blank“} and the data is from <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176513">this paper.</a>target=”_blank"} <br> <br> This is mostly so I can practice setting up a predictive modeling pipeline that allows us to predict who would benefit more from one condition or another in a clinical trial. Even in situations like this where the control group seems minimal, they can actually have some therapeutic benefit. In fact, sometimes people seem to respond better to what we’ve described as psychological placebos compared to what we’ve described as active treatments!<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <br> <br> Let’s start with what we need to do for any predictive modeling pipleline: data cleaning/munging! This is all the more important here because the data was stored in a .sav SPSS data format. This means we need to read_sav from the haven package to read the data in, and to get a sense of what the variables actually are we use the view_df function from the sjPlot package. <br> <br> I also decided to not use any of the non-collected at baseline variables in this particular modeling pipeline. Why? Right now I’m most interested in better matching people to treatments before they start. I would want to use the data over time if I was more interested in trying to tailor the treatment as it was being delivered. Even though it might not look like much, cleaning/munging the data (especially since I’d never seen it before!) took a lot of the time during this stream.</p>
+<p>We’re going to predict subjective feelings of being ready to go back to work at the end of an online randomized clinical trial!<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> I learned about this data from <a href="http://www.nicholasjacobson.com/files/PDFs/Jacobson%20&amp;%20Nemesure,%202020.pdf" target="_blank">a paper by Dr. Nick Jacobson</a> and the data is from <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176513" target="_blank">this paper.</a><br> <br> This is mostly so I can practice setting up a predictive modeling pipeline that allows us to predict who would benefit more from one condition or another in a clinical trial. Even in situations like this where the control group seems minimal, they can actually have some therapeutic benefit. In fact, sometimes people seem to respond better to what we’ve described as psychological placebos compared to what we’ve described as active treatments!<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <br> <br> Let’s start with what we need to do for any predictive modeling pipleline: data cleaning/munging! This is all the more important here because the data was stored in a .sav SPSS data format. This means we need to read_sav from the haven package to read the data in, and to get a sense of what the variables actually are we use the view_df function from the sjPlot package. <br> <br> I also decided to not use any of the non-collected at baseline variables in this particular modeling pipeline. Why? Right now I’m most interested in better matching people to treatments before they start. I would want to use the data over time if I was more interested in trying to tailor the treatment as it was being delivered. Even though it might not look like much, cleaning/munging the data (especially since I’d never seen it before!) took a lot of the time during this stream.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span>
@@ -3514,16 +3514,16 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <pre><code># A tibble: 173 x 33
       id sibar1bt0 behandlungsdauer spe_sum_t0 phq_dept0 phq_som_t0
    &lt;int&gt;     &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
- 1     1   -0.315             0.736      1.86     1.81        1.17 
- 2     2   -0.315             0.239      0.862    2.49        2.83 
- 3     3   -1.35              1.23       1.86     2.15        1.36 
- 4     5    0.576             0.902     -0.132    0.104       0.604
- 5     6    0.724            -0.921     -1.13     0.104      -0.716
- 6     7   -0.166            -0.921      0.862   -0.0671      0.227
- 7     8   -0.0180            3.06      -0.132   -1.26       -0.527
- 8     9   -1.35              2.23       1.86    -0.750      -0.150
- 9    12   -2.84              2.23       0.862    0.445       0.402
-10    13   -0.0180            2.23      -0.132    2.83        1.17 
+ 1     2   -0.326             0.805     0.930     2.41        2.79 
+ 2     3   -1.38              1.14      1.94      2.08        1.33 
+ 3     6    0.724            -0.866    -1.08      0.0881     -0.725
+ 4     7   -0.176            -1.03      0.930    -0.0777      0.210
+ 5     8   -0.0260            3.15     -0.0756   -1.24       -0.538
+ 6     9   -1.38              2.31      1.94     -0.741      -0.164
+ 7    10   -2.72              2.31     -1.08      0.752      -0.538
+ 8    12   -2.87              2.31      0.930     0.420       0.383
+ 9    13   -0.0260            2.31     -0.0756    2.74        1.14 
+10    14   -1.83              2.31     -0.0756    1.25        0.383
 # … with 163 more rows, and 27 more variables: phq_stress_t0 &lt;dbl&gt;,
 #   gad7t0 &lt;dbl&gt;, ksk12t0 &lt;dbl&gt;, psk12t0 &lt;dbl&gt;, av_n1_t0 &lt;dbl&gt;,
 #   av_n2_t0 &lt;dbl&gt;, av_n3_t0 &lt;dbl&gt;, av_n4_t0 &lt;dbl&gt;, av_n5_t0 &lt;dbl&gt;,
@@ -3566,7 +3566,7 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <span class='fu'><a href='https://rdrr.io/pkg/tictoc/man/tic.html'>toc</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>13.092 sec elapsed</code></pre>
+<pre><code>10.855 sec elapsed</code></pre>
 </div>
 <p>Overall we predictions that aren’t terribly far off from the predictions of changes in anxiety and depression from Nick’s original paper (which used an ensemble model stacked on a bunch of base learners). We can’t make an apples to oranges comparison since he and his co-author were predicting different outcomes, but at least I’m not wildly off from where they were.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3578,8 +3578,8 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <pre><code># A tibble: 2 x 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   0.938    25  0.0242 Preprocessor1_Model1
-2 rsq     standard   0.262    25  0.0258 Preprocessor1_Model1</code></pre>
+1 rmse    standard   0.967    25  0.0177 Preprocessor1_Model1
+2 rsq     standard   0.193    25  0.0202 Preprocessor1_Model1</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>r2_intv</span> <span class='op'>&lt;-</span> <span class='va'>xg_rs</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>collect_metrics</span><span class='op'>(</span>summarize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -3590,7 +3590,7 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>r2_intv</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.5122148</code></pre>
+<pre><code>[1] 0.4387755</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>intv_preds</span> <span class='op'>&lt;-</span> <span class='va'>xg_rs</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>collect_predictions</span><span class='op'>(</span>summarize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
@@ -3631,16 +3631,16 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <pre><code># A tibble: 192 x 33
       id sibar1bt0 behandlungsdauer spe_sum_t0 phq_dept0 phq_som_t0
    &lt;int&gt;     &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
- 1     4    -2.49              1.06     -1.24      1.81       0.266
- 2    11    -1.93              2.54     -0.172     0.423     -0.700
- 3    16    -0.118             1.62      0.894     0.771      1.04 
- 4    20     0.858             1.62     -0.172     0.597      1.04 
- 5    21     0.161             1.62      0.894     0.597     -0.893
- 6    22    -1.51              1.62     -0.172     1.64       0.845
- 7    23    -1.51              1.62     -0.172    -0.620     -0.700
- 8    24     0.579             1.62      1.96      0.597      0.266
- 9    25    -1.65              1.62      0.894     0.597     -0.313
-10    31    -0.257             1.62     -1.24     -0.794     -1.42 
+ 1     4   -2.60               1.16     -1.26      1.88      0.313 
+ 2    11   -2.03               2.64     -0.199     0.481    -0.672 
+ 3    16   -0.191              1.72      0.863     0.830     1.10  
+ 4    19   -0.0487             1.72     -0.199     0.133    -0.0813
+ 5    20    0.802              1.72     -0.199     0.656     1.10  
+ 6    21    0.0931             1.72      0.863     0.656    -0.869 
+ 7    22   -1.61               1.72     -0.199     1.70      0.904 
+ 8    23   -1.61               1.72     -0.199    -0.565    -0.672 
+ 9    24    0.518              1.72      1.93      0.656     0.313 
+10    25   -1.75               1.72      0.863     0.656    -0.278 
 # … with 182 more rows, and 27 more variables: phq_stress_t0 &lt;dbl&gt;,
 #   gad7t0 &lt;dbl&gt;, ksk12t0 &lt;dbl&gt;, psk12t0 &lt;dbl&gt;, av_n1_t0 &lt;dbl&gt;,
 #   av_n2_t0 &lt;dbl&gt;, av_n3_t0 &lt;dbl&gt;, av_n4_t0 &lt;dbl&gt;, av_n5_t0 &lt;dbl&gt;,
@@ -3683,7 +3683,7 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <span class='fu'><a href='https://rdrr.io/pkg/tictoc/man/tic.html'>toc</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>13.793 sec elapsed</code></pre>
+<pre><code>10.639 sec elapsed</code></pre>
 </div>
 <p>Overall the predictions for the control group aren’t quite as good, but we’re still doing ok relative to the original predictions on other kinds of outcomes from Nick’s paper.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3695,8 +3695,8 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <pre><code># A tibble: 2 x 6
   .metric .estimator  mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   1.08     25  0.0228 Preprocessor1_Model1
-2 rsq     standard   0.184    25  0.0230 Preprocessor1_Model1</code></pre>
+1 rmse    standard   1.08     25  0.0203 Preprocessor1_Model1
+2 rsq     standard   0.164    25  0.0175 Preprocessor1_Model1</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>r2_ctrl</span> <span class='op'>&lt;-</span> <span class='va'>xg_rs_ctrl</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>collect_metrics</span><span class='op'>(</span>summarize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -3707,7 +3707,7 @@ The retained training set is ~ 0.06 Mb  in memory.</code></pre>
 <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>r2_ctrl</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.4295201</code></pre>
+<pre><code>[1] 0.4047978</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ctrl_preds</span> <span class='op'>&lt;-</span> <span class='va'>xg_rs_ctrl</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>collect_predictions</span><span class='op'>(</span>summarize <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
