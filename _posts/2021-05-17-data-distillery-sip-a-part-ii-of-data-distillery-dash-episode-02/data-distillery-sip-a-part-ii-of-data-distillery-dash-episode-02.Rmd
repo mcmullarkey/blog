@@ -1,7 +1,7 @@
 ---
-title: "Data Distillery Sip: A Part II of Data Distillery Dash Episode 02"
+title: "Data Distillery Sip: Part II of Data Distillery Dash Episode 02"
 description: |
-  A short description of the post.
+  Why are we fitting two predictive models instead of just one?
 author:
   - name: Michael Mullarkey, PhD (Click to return to my website)
     url: https://mcmullarkey.github.io
@@ -21,11 +21,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Sometimes, I do a livestream/blog post combo called Data Distillery Dash. I take a research topic at random^[Yikes] or dataset I've never seen^[double yikes], wrangle the data, create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in the [part I post](https://mcmullarkey.github.io/mcm-blog/posts/2021-05-13-data-distillery-dash-episode-02/){target="_blank"} were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](twitch.tv/mcmullarkey){target="_blank"} <br>
 <br>
-Sometimes, I'll want to do extensions on what I accomplished during the Data Distillery Dash, but at a more leisurely pace. I've decided to call those posts Data Distillery Sips. This is the first one, and also serves as a continuing tutorial on how to build a predictive pipeline for psychological interventions.
+Sometimes, I'll want to do extensions on what I accomplished during the Data Distillery Dash, but at a (slightly) more leisurely pace. I've decided to call those posts Data Distillery Sips. This is the first one, and also serves as a continuing tutorial on how to build a predictive pipeline for psychological interventions.
 
-## Where Did We Leave Off?
+## Where Did We Leave Off/Why Were We Doing That?
 
-At the end of the last post, we had built predictive models within the intervention and control groups of an online intervention. We had to build these models separately because 
+At the end of the last post, we had built predictive models within the intervention and control groups of an online intervention. We had to build these models separately because knowing which intervention would be better for someone requires estimating two things: <br>
+<br>
+1. How well we'd predict the person would respond to the intervention they actually received <br>
+<br>
+2. How well we'd predict the person would respond to the intervention they didn't actually receive <br>
+<br>
+If that feels confusing, it's ok! To understand why we need to do this, imagine we have access to a time machine^[I promise this is relevant, stay with me!]. First, we give someone one of these online interventions, then measure how well they respond to that intervention. Then, we use our time machine to go back and give the same person the other intervention and measure how well they respond to that intervention. We then compare how much they improved in one timeline/intervention vs. another, and we could *know* which intervention helped them more. <br>
+<br>
+But we don't have access to that time machine^[or if you do you should probably tell somebody] so we can't know for sure which intervention would benefit somebody more. However, since folks in this study were randomized to different groups, that means people from both groups are statistically exchangeable. Dr. Darren Dahly has an [excellent post on this concept](https://statsepi.substack.com/p/out-of-balance){target="_blank"}, but the key takeaway is: randomization means we can assume the distribution of future outcomes is the same in both groups. In other words, we can assume that absent any intervention the distribution of how well people would do over time is equivalent across groups. Approximately equivalent numbers of folks would get better, stay the same, or worsen on the outcome we care about. <br>
+<br>
 
+## What Does Exchangeability Buy Us?
 
+This exchangeability allows us to use our models to make predictions *as if* both groups had received both interventions. Then, we can see which model predicts more improvement for any given person. Some participants will be "lucky" and have been randomized to the intervention our models predict would be more optimal for them. Some participants will be "unlucky" and have been randomized to the intervention our models predict would be less effective for them. <br> 
+<br>
+The tempting^[and common!] way to conduct this next step would be to use the same data we used to make our predictions. That way we could test if the "lucky" participants improved more than the "unlucky" participants. However, we'd be testing our predictions on the same data used to generate those predictions. This is a huge no-no in prediction-focused spaces^[and likely even more of a problem than usual here, since we're looking at differential performance across models]. Showing our predictions generalize only to the data that produced the predictions isn't that impressive. We want to see if those predictions can generalize to data the model has never seen before.
+
+## The Importance of the Hold Out Set
+
+Luckily, we created a "test" or "hold out"^[there are lots of names that mean the same thing in machine learning, statistics, etc.] set of 80 people that weren't used to train the initial model. We'll want to apply the predictions of both models to those 80 people, determine who was "lucky" vs. "unlucky" and then compare whether the "lucky" group actually improved more than the "unlucky" group. 
+
+## What We'll Get To in Part 3
+
+This sip has been mroe about why we're doing what we're doing. The next post will contain the code that makes this happen.
 
