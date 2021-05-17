@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## What Is Data Distillery Dash?
 
-I take a research topic at random^[Yikes], wrangle the data, I create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](twitch.tv/mcmullarkey){target="_blank"}
+I take a research topic at random^[Yikes], wrangle the data, I create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](https://www.twitch.tv/mcmullarkey){target="_blank"}
 
 ## We Let R Choose the Research Topic!
 

@@ -2415,7 +2415,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 
 <div class="d-article">
 <h2 id="what-is-data-distillery-dash">What Is Data Distillery Dash?</h2>
-<p>I take a research topic at random<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, wrangle the data, I create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST <a href="twitch.tv/mcmullarkey" target="_blank">here.</a></p>
+<p>I take a research topic at random<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, wrangle the data, I create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in this post were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST <a href="https://www.twitch.tv/mcmullarkey" target="_blank">here.</a></p>
 <h2 id="we-let-r-choose-the-research-topic">We Let R Choose the Research Topic!</h2>
 <p>Originally I was thinking of rolling a die, but since R can choose, we let it!</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2498,7 +2498,7 @@ Totals</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/tictoc/man/tic.html'>toc</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>52.825 sec elapsed</code></pre>
+<pre><code>52.136 sec elapsed</code></pre>
 </div>
 <h2 id="here-was-my-initial-frantic-plan">Here Was My Initial Frantic Plan</h2>
 <p>Do data wrangling (Create target variable) <br> <br> Get minimal model pipeline (Includes EDA) <br> <br> Go back and iterate on modeling <br> <br> TWIST<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <br> <br> Making more plots if we have time, and building out the rest of the blog post</p>
@@ -2614,7 +2614,7 @@ Totals</code></pre>
     <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"True Shooting % - EFG%"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing univariate associations-1.png" width="624" /></p>
+<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing%20univariate%20associations-1.png" width="624" /></p>
 </div>
 <p>Here come the recipes! Nope, the food I make isn’t tasty, but at least this recipe can take care of any missing data or near-zero variance predictors. I also decided to train a no-frills linear regression along with an out of the box boosted tree model.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2696,8 +2696,8 @@ The retained training set is ~ 1.75 Mb  in memory.</code></pre>
 <span class='op'>}</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>0.556 sec elapsed
-0.88 sec elapsed</code></pre>
+<pre><code>0.523 sec elapsed
+0.782 sec elapsed</code></pre>
 </div>
 <h2 id="evaluting-the-models-using-10-fold-cross-validation">Evaluting the Models Using 10-Fold Cross-Validation</h2>
 <p>Then I evaluated both models using <a href="https://www.openml.org/a/estimation-procedures/7">10 fold cross-validation</a> to make sure I’m not overfitting too much.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
@@ -2723,8 +2723,8 @@ The retained training set is ~ 1.75 Mb  in memory.</code></pre>
 <span class='op'>}</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>14.208 sec elapsed
-16.943 sec elapsed</code></pre>
+<pre><code>12.745 sec elapsed
+15.668 sec elapsed</code></pre>
 </div>
 <h2 id="how-did-the-models-do">How Did the Models Do?</h2>
 <p>Both models did about the same as one another according to RMSE! That would make me prefere the simpler linear model, though I’m 100% sure these models could be improved. If I had more time, I would have done some tunining of the xgboost model, done some more visualizations to assist with feature engineering, and maybe even created some spicy memes.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
@@ -2810,10 +2810,10 @@ The retained training set is ~ 1.75 Mb  in memory.</code></pre>
 </code></pre>
 </div>
 <pre><code>[[1]]</code></pre>
-<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing how well the predictions are working-1.png" width="624" /></p>
+<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing%20how%20well%20the%20predictions%20are%20working-1.png" width="624" /></p>
 <pre><code>
 [[2]]</code></pre>
-<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing how well the predictions are working-2.png" width="624" /></p>
+<p><img src="data-distillery-dash-episode-01_files/figure-html5/visualizing%20how%20well%20the%20predictions%20are%20working-2.png" width="624" /></p>
 </div>
 <h2 id="final-thoughts">Final Thoughts</h2>
 <p>This was really fun! It came down to the wire for me to finish this post, but I had an absolute blast. I’m looking forward to doing this again. If you enjoyed this, <a href="twitch.tv/mcmullarkey">come follow me on Twitch</a></p>
