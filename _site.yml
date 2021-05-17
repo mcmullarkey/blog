@@ -9,8 +9,8 @@ navbar:
       href: https://mcmullarkey.github.io/
     - text: "Resume"
       href: https://mcmullarkey.github.io/resume_markdown.pdf
-    - text: "Consulting"
-      href: https://mcmullarkey.github.io/consulting.html
     - text: "Blog"
       href: index.html
+    - text: "Consulting"
+      href: https://mcmullarkey.github.io/consulting.html
 output: distill::distill_article
