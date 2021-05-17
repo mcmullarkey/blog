@@ -1,5 +1,6 @@
 ---
 title: "Michael Mullarkey's Blog"
+theme: theme.css
 site: distill::distill_website
 listing: posts
 ---

@@ -3,6 +3,7 @@ title: "Michael Mullarkey's Blog"
 description: |
   Michael Mullarkey's Blog
 output_dir: "docs"
+theme: theme.css
 navbar:
   right:
     - text: "Home"
