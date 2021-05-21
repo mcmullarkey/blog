@@ -154,6 +154,10 @@ xg_wf <-
   add_recipe(intv_rec) %>% 
   add_model(xg_mod)
 
+# Saving active intervention workflow
+
+# write_rds(xg_wf, "active_workflow.rds")
+
 ```
 
 ```{r run a cross validated model}
@@ -193,6 +197,8 @@ intv_preds <- xg_rs %>%
 
 # fit_workflow <- fit(xg_wf, data_ctrl)
 
+# Saving work
+
 
 ```
 
@@ -229,6 +235,10 @@ xg_wf_ctrl <-
   workflow() %>% 
   add_recipe(ctrl_rec) %>% 
   add_model(xg_mod)
+
+# Saving ctrl workflow
+
+# write_rds(xg_wf_ctrl, "control_workflow.rds")
 
 ```
 
