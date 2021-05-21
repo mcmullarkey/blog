@@ -31,8 +31,12 @@ We've built both of those models, and we can read them in now.
 
 ```{r}
 
+library(tidyverse)
+
 act_model <- read_rds("active_workflow.rds")
 ctrl_model <- read_rds("control_workflow.rds")
+
+summary(ctrl_model)
 
 ```
 
@@ -40,11 +44,30 @@ We'll also read in the holdout data we created in [a previous post](https://mcmu
 
 ```{r}
 
-holdout_ctrl <- read_rds("test_set_control.rds")
-holdout_actv <- read_rds("test_set_active.rds")
+holdout_ctrl <- read_rds("test_set_control.rds") %>% 
+  as_tibble()
+holdout_actv <- read_rds("test_set_active.rds") %>% 
+  as_tibble()
+
+class(holdout_actv)
 
 ```
 
+Now, we'll make predictions on each holdout set using both models. After that, we'll wrangle the dataframes^[which the tidymodels ecosystem make super easy to create/wrangle] so they include all the info we need.
+
+```{r}
+library(tidymodels)
+
+# Fit the placebo workflow to the placebo data
+
+fit_wf_ctrl <- fit(object = ctrl_model, data = holdout_ctrl)
+
+## Apply placebo predictions within the active group
+
+ctrl_preds_actv <- predict(ctrl_model, holdout_actv) %>% 
+  rename(counterfactual_pred = .pred)
+
+```
 
 
 
