@@ -1,0 +1,27 @@
+---
+title: "Data Distillery Sip: Part III of Data Distillery Dash Episode 02"
+description: |
+  A short description of the post.
+author:
+  - name: Michael Mullarkey, PhD (Click to return to my website)
+    url: https://mcmullarkey.github.io
+date: 05-18-2021
+draft: true
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+## What is Data Distillery Sip?
+
+Sometimes, I do a livestream/blog post combo called Data Distillery Dash. I take a research topic at random^[Yikes] or dataset I've never seen^[double yikes], wrangle the data, create a predictive model or two, and write up a blog post: all within 2 hours live on Twitch! All the words and code in the [part I post](https://mcmullarkey.github.io/mcm-blog/posts/2021-05-13-data-distillery-dash-episode-02/){target="_blank"} were written during an ~2 hour livestream. If you want to come join the party, I plan on doing this on Thursdays from 3:30-5:30 EST [here.](https://www.twitch.tv/mcmullarkey){target="_blank"} <br>
+<br>
+Sometimes, I'll want to do extensions on what I accomplished during the Data Distillery Dash, but at a (slightly) more leisurely pace. I've decided to call those posts Data Distillery Sips. This is the first one, and also serves as a continuing tutorial on how to build a predictive pipeline for psychological interventions.
+
+## Where Did We Leave Off/Why Were We Doing That?
+
