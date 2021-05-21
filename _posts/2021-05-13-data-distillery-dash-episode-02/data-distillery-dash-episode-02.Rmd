@@ -166,7 +166,10 @@ xg_wf <-
   add_recipe(intv_rec) %>% 
   add_model(xg_mod)
 
-# Saving active intervention workflow
+# Saving active intervention workflow (may need to fit it here, but that's throwing an error right now too: https://stackoverflow.com/questions/62948527/tidymodels-error-when-predicting-on-new-data-with-xgboost-model)
+
+# fit_xg_wf <- xg_wf %>%
+#   fit(data_intv)
 
 # write_rds(xg_wf, "active_workflow.rds")
 
