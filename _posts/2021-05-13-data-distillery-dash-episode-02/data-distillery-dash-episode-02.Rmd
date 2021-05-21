@@ -104,12 +104,24 @@ data_ctrl_init <- data_updt %>%
 test_intv <- data_intv_init %>% 
   slice_sample(n = 40)
 
+# Read test set data for a future post
+
+# write_rds(test_intv, "test_set_active.rds")
+
+# Removing test ids from training data
+
 data_intv <- data_intv_init %>% 
   anti_join(test_intv, by = "id") #%>% 
   #glimpse()
 
 test_ctrl <- data_ctrl_init %>% 
   slice_sample(n = 40)
+
+# Read test set data for a future post
+
+# write_rds(test_ctrl, "test_set_control.rds")
+
+# Removing test ids from training data
 
 data_ctrl <- data_ctrl_init %>% 
   anti_join(test_ctrl, by = "id") #%>% 
