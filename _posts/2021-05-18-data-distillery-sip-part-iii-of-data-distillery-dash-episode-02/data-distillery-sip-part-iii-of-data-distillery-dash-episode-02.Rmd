@@ -6,7 +6,7 @@ author:
   - name: Michael Mullarkey, PhD (Click to return to my website)
     url: https://mcmullarkey.github.io
 date: 05-18-2021
-draft: true
+draft: false
 output:
   distill::distill_article:
     self_contained: false
@@ -33,10 +33,8 @@ We've built both of those models, and we can read them in now.
 
 library(tidyverse)
 
-act_model <- read_rds("active_workflow.rds")
-ctrl_model <- read_rds("control_workflow.rds")
-
-summary(ctrl_model)
+actv_model <- read_rds("active_fitted_workflow.rds")
+ctrl_model <- read_rds("control_workflow_fitted.rds")
 
 ```
 
@@ -44,12 +42,8 @@ We'll also read in the holdout data we created in [a previous post](https://mcmu
 
 ```{r}
 
-holdout_ctrl <- read_rds("test_set_control.rds") %>% 
-  as_tibble()
-holdout_actv <- read_rds("test_set_active.rds") %>% 
-  as_tibble()
-
-class(holdout_actv)
+holdout_ctrl <- read_rds("test_set_control.rds")
+holdout_actv <- read_rds("test_set_active.rds")
 
 ```
 
@@ -58,18 +52,121 @@ Now, we'll make predictions on each holdout set using both models. After that, w
 ```{r}
 library(tidymodels)
 
-# Fit the placebo workflow to the placebo data
-
-fit_wf_ctrl <- fit(object = ctrl_model, data = holdout_ctrl)
-
 ## Apply placebo predictions within the active group
 
 ctrl_preds_actv <- predict(ctrl_model, holdout_actv) %>% 
-  rename(counterfactual_pred = .pred)
+  rename(counterfactual_pred = .pred) %>% 
+  bind_cols(holdout_actv %>% dplyr::select(id)) %>% 
+  relocate(id, everything()) %>% 
+  print()
+
+## Apply placebo predictions within the placebo group
+
+ctrl_preds_ctrl <- predict(ctrl_model, holdout_ctrl) %>% 
+  rename(received_pred = .pred) %>% 
+  bind_cols(holdout_ctrl %>% dplyr::select(id)) %>% 
+  relocate(id, everything()) %>% 
+  print()
+
+## Apply active predictions within the placebo group
+
+actv_preds_ctrl <- predict(actv_model, holdout_ctrl) %>% 
+  rename(counterfactual_pred = .pred) %>% 
+  bind_cols(holdout_ctrl %>% dplyr::select(id)) %>% 
+  relocate(id, everything()) %>% 
+  print()
+
+## Apply active predictions within the active group
+
+actv_preds_actv <- predict(actv_model, holdout_actv) %>% 
+  rename(received_pred = .pred) %>% 
+  bind_cols(holdout_actv %>% dplyr::select(id)) %>% 
+  relocate(id, everything()) %>% 
+  print()
+
+```
+
+We need to determine whether people were "unlucky"^[assigned to the intervention the model predicts would give them a worse outcome] or "lucky"^[assigned to the intervention the model predicts would give them a better outcome] according to our models. In this case, lower scores on the SPE at timepoint 3 in the trial are the better outcome, so we'll wrangle our data with that understanding. We also have to bring in the timepoint 0^[baseline] scores on the SPE as we'll want to make sure to control for that in our subsequent evaluation.
+
+```{r determineed model preferred intervention}
+
+# Binding together the different dataframes to make our predictions about preferred intervention
+
+ctrl_preds <- ctrl_preds_ctrl %>% 
+  bind_cols(actv_preds_ctrl %>% dplyr::select(counterfactual_pred)) %>% 
+  mutate(spe_actv_adv = received_pred - counterfactual_pred, # Higher is worse, lower is better
+         prefer = factor(ifelse(spe_actv_adv > 0, "Prefer Active", "Prefer Control")),
+         lucky = factor(ifelse(prefer == "Prefer Control", "Lucky", "Unlucky"))) %>% 
+  bind_cols(holdout_ctrl %>% dplyr::select(spe_sum_t0, spe_sum_t3)) %>% 
+  print()
+
+# Now for the active condition
+
+actv_preds <- actv_preds_actv %>% 
+  bind_cols(ctrl_preds_actv %>% dplyr::select(counterfactual_pred)) %>% 
+  mutate(spe_actv_adv = received_pred - counterfactual_pred, # Higher is worse, lower is better
+         prefer = factor(ifelse(spe_actv_adv < 0, "Prefer Active", "Prefer Control")),
+         lucky = factor(ifelse(prefer == "Prefer Active", "Lucky", "Unlucky"))) %>% 
+  bind_cols(holdout_actv %>% dplyr::select(spe_sum_t0, spe_sum_t3)) %>% 
+  print()
+
+
+```
+
+We also see we have roughly equivalent numbers of lucky vs. unlucky participants within both intervention groups according to our models. This is a nice pattern, since it's easier for us to believe the association between being lucky or unlucky and outcome among test set participants is due to model predictions.^[and not due to some blatant confounding factor, like all the "lucky" participants being in one treatment group]
+
+```{r}
+
+ctrl_preds %>% 
+  count(lucky) 
+
+actv_preds %>% 
+  count(lucky) 
 
 ```
 
 
+Now, we want to see if participants in our test identified as "lucky" actually improve more than participants identified by our models as "unlucky." <br>
+<br>
+First, we make our reference level explicit in the Lucky vs. Unlucky factor variable to increase the potential interpretability of the model. In this case, we can now know that a negative coefficient for the "lucky" variable indicates lucky participants have lower/better scores on the SPE at timepoint 3 controlling for timepoint 0.^[baseline] <br>
+<br>
+We're using a Bayesian model here while using default priors.^[we'll dive way more into prior specification etc. for future iterations of this workflow, but since this is for demonstration we'll keep it simpler for now] As we can see from the summaries and plots, we can't draw strong conclusions about whether being "lucky" according to our models actually predicted improved outcomes in the test set. With only 93 people in the holdout set the uncertainty swamps the information we have pretty substantially.
+
+```{r, message = FALSE, warning = FALSE}
+
+luck <- ctrl_preds %>% 
+  bind_rows(actv_preds) %>% 
+  mutate(lucky = relevel(lucky, ref = "Unlucky")) # Making Unlucky the explicit reference level
+
+# Packages for Bayesian multiple regression
+
+library(rstan) 
+library(brms)
+library(psych)
+
+# model <- brm(formula = spe_sum_t3 ~ spe_sum_t0 + lucky, 
+#              data    = luck,
+#              seed    = 33)
+
+# write_rds(model, "model.rds")
+model <- read_rds("model.rds")
+
+```
+
+```{r}
+
+mcmc_plot(model)
+
+hypothesis(model, "luckyLucky < 0")
+```
+
+Still, we now have an end to end pipeline for predicting differential response to psychological interventions! This series was for demonstration purposes only, and there are at least several ways the process could be improved. <br>
+<br>
+1. Do further feature engineering to attempt to improve the models <br>
+2. Evaluating and tuning the original models more within the training sets^[likely using workflowsets from tidymodels] <br>
+3. Doing simulations to determine how many participants would be needed in the test set to overcome our uncertainty around our Lucky vs. Unlucky parameter in the final evaluation <br>
+<br>
+I hope you found these posts helpful, and I'll post more as this workflow continues to evolve.
 
 
 

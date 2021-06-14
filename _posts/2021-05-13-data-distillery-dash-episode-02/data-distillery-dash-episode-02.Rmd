@@ -101,31 +101,25 @@ data_ctrl_init <- data_updt %>%
 
 # Pulling out folks for test set later
 
-test_intv <- data_intv_init %>% 
-  slice_sample(n = 40)
+intv_ml <- initial_split(data_intv_init, prop = 4/5, strata = spe_sum_t3)
+
+intv_train <- training(intv_ml)
+intv_test <- testing(intv_ml)
 
 # Read test set data for a future post
 
-# write_rds(test_intv, "test_set_active.rds")
+write_rds(intv_test, "test_set_active.rds")
 
 # Removing test ids from training data
 
-data_intv <- data_intv_init %>% 
-  anti_join(test_intv, by = "id") #%>% 
-  #glimpse()
+ctrl_ml <- initial_split(data_ctrl_init, prop = 4/5, strata = spe_sum_t3)
 
-test_ctrl <- data_ctrl_init %>% 
-  slice_sample(n = 40)
+ctrl_train <- training(ctrl_ml)
+ctrl_test <- testing(ctrl_ml)
 
 # Read test set data for a future post
 
-# write_rds(test_ctrl, "test_set_control.rds")
-
-# Removing test ids from training data
-
-data_ctrl <- data_ctrl_init %>% 
-  anti_join(test_ctrl, by = "id") #%>% 
-  #glimpse()
+write_rds(ctrl_test, "test_set_control.rds")
 
 
 ```
@@ -137,9 +131,10 @@ I then set up a tidymodels workflow using an out of the box xgboost model^[no ti
 ```{r preprocessing and machine learning intevention group}
 
 intv_rec <-
-  recipe(spe_sum_t3 ~ ., data = data_intv) %>%
+  recipe(spe_sum_t3 ~ ., data = intv_train) %>%
   step_rm(imputation) %>% 
   update_role(id, new_role = "id") %>% 
+  step_novel(all_nominal_predictors()) %>% 
   step_other(all_nominal_predictors()) %>% 
   step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
   step_nzv(all_predictors()) %>% 
@@ -168,10 +163,10 @@ xg_wf <-
 
 # Saving active intervention workflow (may need to fit it here, but that's throwing an error right now too: https://stackoverflow.com/questions/62948527/tidymodels-error-when-predicting-on-new-data-with-xgboost-model)
 
-# fit_xg_wf <- xg_wf %>%
-#   fit(data_intv)
+fit_xg_wf <- xg_wf %>%
+   fit(intv_train)
 
-# write_rds(xg_wf, "active_workflow.rds")
+write_rds(fit_xg_wf, "active_fitted_workflow.rds")
 
 ```
 
@@ -180,6 +175,8 @@ xg_wf <-
 intv_folds <- vfold_cv(data_intv, v = 5, repeats = 5, strata = spe_sum_t3)
 
 keep_pred <- control_resamples(save_pred = TRUE)
+
+doMC::registerDoMC(cores = 7)
 
 library(tictoc)
 tic()
@@ -222,7 +219,7 @@ I then do the same preprocessing and model fitting for the control group!
 ```{r preprocessing and machine learning control group}
 
 ctrl_rec <-
-  recipe(spe_sum_t3 ~ ., data = data_ctrl) %>%
+  recipe(spe_sum_t3 ~ ., data = ctrl_train) %>%
   step_rm(imputation) %>% 
   update_role(id, new_role = "id") %>% 
   step_other(all_nominal_predictors()) %>% 
@@ -251,9 +248,12 @@ xg_wf_ctrl <-
   add_recipe(ctrl_rec) %>% 
   add_model(xg_mod)
 
-# Saving ctrl workflow
+# Saving fitted ctrl workflow
 
-# write_rds(xg_wf_ctrl, "control_workflow.rds")
+xg_wf_ctrl_fitted <- xg_wf_ctrl %>% 
+  fit(ctrl_train)
+
+write_rds(xg_wf_ctrl_fitted, "control_workflow_fitted.rds")
 
 ```
 
