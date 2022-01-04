@@ -72,7 +72,7 @@ skim(listen_data)
 
 Spotify Wrapped focuses on totals throughout the year, and I was curious about what my listening habits looked like at different times of year. I created this and all the other visualizations in this plot using ggplot2. The custom font via the showtext package made a huge difference, and I highly recommend using the color schemes from the viridis palettes. They look cool and they're pre-assessed for [accessibility.](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html){target="_blank"} 
 
-```{r listening time over time}
+```{r listening time over time, preview = TRUE}
 
 font_add_google(name = "Oswald",
                 family = "oswald")
