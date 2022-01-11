@@ -85,635 +85,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Michael Mullarkey: Michael Mullarkey's Blog</title>
+  <title>Creating a Data Viz Theme from a Podcast Logo</title>
+
+  <meta property="description" itemprop="description" content="A You&#39;re Wrong About Data Viz"/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-01-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-01-10"/>
+  <meta name="article:author" content="Michael Mullarkey, PhD (Click to return to my website)"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Michael Mullarkey: Michael Mullarkey&#39;s Blog"/>
+  <meta property="og:title" content="Creating a Data Viz Theme from a Podcast Logo"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A You&#39;re Wrong About Data Viz"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Michael Mullarkey"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Michael Mullarkey: Michael Mullarkey&#39;s Blog"/>
+  <meta property="twitter:title" content="Creating a Data Viz Theme from a Podcast Logo"/>
+  <meta property="twitter:description" content="A You&#39;re Wrong About Data Viz"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","theme","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Michael Mullarkey's Blog"]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Creating a Data Viz Theme from a Podcast Logo"]},{"type":"character","attributes":{},"value":["A You're Wrong About Data Viz\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Michael Mullarkey, PhD (Click to return to my website)"]},{"type":"character","attributes":{},"value":["https://mcmullarkey.github.io"]}]}]},{"type":"character","attributes":{},"value":["01-10-2022"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["VAL-UltraBlack.ttf","youre-wrong-about-data-viz_files/anchor-4.2.2/anchor.min.js","youre-wrong-about-data-viz_files/bowser-1.9.3/bowser.min.js","youre-wrong-about-data-viz_files/distill-2.2.21/template.v2.js","youre-wrong-about-data-viz_files/figure-html5/improved youre wrong about plot-1.png","youre-wrong-about-data-viz_files/figure-html5/youre wrong about plot-1.png","youre-wrong-about-data-viz_files/header-attrs-2.8/header-attrs.js","youre-wrong-about-data-viz_files/jquery-1.11.3/jquery.min.js","youre-wrong-about-data-viz_files/popper-2.6.0/popper.min.js","youre-wrong-about-data-viz_files/tippy-6.2.7/tippy-bundle.umd.min.js","youre-wrong-about-data-viz_files/tippy-6.2.7/tippy-light-border.css","youre-wrong-about-data-viz_files/tippy-6.2.7/tippy.css","youre-wrong-about-data-viz_files/tippy-6.2.7/tippy.umd.min.js","youre-wrong-about-data-viz_files/webcomponents-2.0.0/webcomponents.js","ywa_logo.png"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2028,670 +1432,207 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </script>
 
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">/* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-  /* @import url('https://fonts.googleapis.com/css2?family=Amiri');   /* 
-  /* @import url('https://fonts.googleapis.com/css2?family=Bitter');  /* 
-  /* @import url('https://fonts.googleapis.com/css2?family=DM+Mono'); /* 
-
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.02rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #FF2281;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      #00207F;
-    --aside-color:     rgba(0, 0, 0, 0.8);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    serif;
-    --mono-font:       monospace;
-    --body-font:       serif;
-    --navbar-font:     serif;
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      #7898FB;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      #7898FB;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">
-  /* base style */
-
-  /* FONT FAMILIES */
-
-  :root {
-    --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-
-  body,
-  .posts-list .post-preview p,
-  .posts-list .description p {
-    font-family: var(--body-font), var(--body-default);
-  }
-
-  h1, h2, h3, h4, h5, h6,
-  .posts-list .post-preview h2,
-  .posts-list .description h2 {
-    font-family: var(--heading-font), var(--heading-default);
-  }
-
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
-  }
-
-
-  /*-- TITLE --*/
-  d-title h1,
-  .posts-list > h1 {
-    color: var(--title-color, black);
-  }
-
-  d-title h1 {
-    font-size: var(--title-size, 50px);
-  }
-
-  /*-- HEADERS --*/
-  d-article h1,
-  d-article h2,
-  d-article h3,
-  d-article h4,
-  d-article h5,
-  d-article h6 {
-    color: var(--header-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-    font-size: var(--body-size, 1.06rem);
-  }
-
-
-  /*-- CODE --*/
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-size: var(--code-size, 14px);
-  }
-
-  /*-- ASIDE --*/
-  d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- FIGURE CAPTIONS --*/
-  figure .caption,
-  figure figcaption,
-  .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- METADATA --*/
-  d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  d-byline a,
-  d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- TABLE OF CONTENTS --*/
-  .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
-  }
-
-  .d-contents nav a {
-    font-size: var(--contents-size, 13px);
-  }
-
-  /*-- APPENDIX --*/
-  d-appendix h3 {
-    font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
-  }
-
-  d-appendix {
-    font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .distill-site-header a,
-  .nav-dropdown .nav-dropbtn {
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
-  }
-
-  .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer a:hover {
-    color: var(--hover-color, white);
-  }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="youre-wrong-about-data-viz_files/header-attrs-2.8/header-attrs.js"></script>
+  <script src="youre-wrong-about-data-viz_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="youre-wrong-about-data-viz_files/popper-2.6.0/popper.min.js"></script>
+  <link href="youre-wrong-about-data-viz_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="youre-wrong-about-data-viz_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="youre-wrong-about-data-viz_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="youre-wrong-about-data-viz_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="youre-wrong-about-data-viz_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="youre-wrong-about-data-viz_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="youre-wrong-about-data-viz_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Michael Mullarkey's Blog","authors":[]}
+{"title":"Creating a Data Viz Theme from a Podcast Logo","description":"A You're Wrong About Data Viz","authors":[{"author":"Michael Mullarkey, PhD (Click to return to my website)","authorURL":"https://mcmullarkey.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-10T00:00:00.000+00:00","citationText":"website), 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">Michael Mullarkey</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="https://mcmullarkey.github.io/">Home</a>
-<a href="https://mcmullarkey.github.io/resume_markdown.pdf">Resume</a>
-<a href="index.html">Blog</a>
-<a href="https://mcmullarkey.github.io/consulting.html">Consulting</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Michael Mullarkey&#39;s Blog">Michael Mullarkey's Blog</h1>
-<a href="posts/2022-01-10-youre-wrong-about-data-viz/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 10, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Creating a Data Viz Theme from a Podcast Logo</h2>
-<div class="dt-tags"></div>
-<p>A You're Wrong About Data Viz</p>
-</div>
-</a>
-<a href="posts/2022-01-07-spotify-api-r/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 7, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Get Your Spotify Data via R Right Away</h2>
-<div class="dt-tags"></div>
-<p>Using the Spotify API to Find Out How Danceable My Top Artists Are</p>
-</div>
-</a>
-<a href="posts/2022-01-04-tidy-your-spotify-data/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 4, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Get, Tidy, and Visualize Your Spotify Data</h2>
-<div class="dt-tags"></div>
-<p>How to get your own Spotify data, tidy, and visualize it</p>
-</div>
-</a>
-<a href="posts/2021-05-18-data-distillery-sip-part-iii-of-data-distillery-dash-episode-02/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 18, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-05-18-data-distillery-sip-part-iii-of-data-distillery-dash-episode-02/data-distillery-sip-part-iii-of-data-distillery-dash-episode-02_files/figure-html5/unnamed-chunk-6-1.png"/>
-</div>
-<div class="description">
-<h2>Data Distillery Sip: Part III of Data Distillery Dash Episode 02</h2>
-<div class="dt-tags"></div>
-<p>A short description of the post.</p>
-</div>
-</a>
-<a href="posts/2021-05-18-im-opting-out/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 18, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>I'm Opting Out</h2>
-<div class="dt-tags"></div>
-<p>And I'm relieved</p>
-</div>
-</a>
-<a href="posts/2021-05-17-data-distillery-sip-a-part-ii-of-data-distillery-dash-episode-02/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 17, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Data Distillery Sip: Part II of Data Distillery Dash Episode 02</h2>
-<div class="dt-tags"></div>
-<p>Why are we fitting two predictive models instead of just one?</p>
-</div>
-</a>
-<a href="posts/2021-05-13-data-distillery-dash-episode-02/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 13, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Data Distillery Dash Episode 02</h2>
-<div class="dt-tags"></div>
-<p>The start of a prediction pipeline for psychological interventions.</p>
-</div>
-</a>
-<a href="posts/2021-05-06-data-distillery-dash-episode-01/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 6, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2021-05-06-data-distillery-dash-episode-01/data-distillery-dash-episode-01_files/figure-html5/unnamed-chunk-7-1.png"/>
-</div>
-<div class="description">
-<h2>Data Distillery Dash Episode 01</h2>
-<div class="dt-tags"></div>
-<p>A short description of the post.</p>
-</div>
-</a>
-<a href="posts/2021-05-04-party-drugs-lies-and-statistics/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 4, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Michael Mullarkey, PhD (Click to return to my website)</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2021-05-04-party-drugs-lies-and-statistics/party-drugs-lies-and-statistics_files/figure-html5/unnamed-chunk-1-1.png"/>
-</div>
-<div class="description">
-<h2>Party Drugs, Lies, and Statistics</h2>
-<div class="dt-tags"></div>
-<p>How the party drug hype cycle is both already over and neverending</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Michael Mullarkey’s Blog</h1>
+<h1>Creating a Data Viz Theme from a Podcast Logo</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>A You’re Wrong About Data Viz</p></p>
 </div>
 
+<div class="d-byline">
+  Michael Mullarkey, PhD (Click to return to my website) <a href="https://mcmullarkey.github.io" class="uri">https://mcmullarkey.github.io</a> 
+  
+<br/>01-10-2022
+</div>
 
 <div class="d-article">
+<h2 id="its-podcast-time">It’s Podcast Time</h2>
+<p>I’ve had a lot of fun writing a <a href="https://mcmullarkey.github.io/mcm-blog/posts/2022-01-04-tidy-your-spotify-data/" target="_blank">post working with Spotify data you have to request</a> and a <a href="https://mcmullarkey.github.io/mcm-blog/posts/2022-01-07-spotify-api-r/" target="_blank">post working with Spotify data retrieved through Spotify’s API.</a> <br> <br> However, both of those posts focused more heavily on my music listening habits, and podcasts are a big part of my life. This post will walk through how I created a data viz based on the logo of one of my favorite podcasts: <a href="https://open.spotify.com/show/1RefFgQB4Lrl7qczcTWA3o?si=d25c2a2485b84e1b" target="_blank">You’re Wrong About</a>.</p>
+<h2 id="load-packages">Load Packages</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/charlie86/spotifyr'>spotifyr</a></span><span class='op'>)</span> <span class='co'># API</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> <span class='co'># For tidying/plotting</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/yixuan/showtext'>showtext</a></span><span class='op'>)</span> <span class='co'># Custom fonts for plots</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://scales.r-lib.org'>scales</a></span><span class='op'>)</span> <span class='co'># For adding different scales</span>
+</code></pre>
+</div>
+</div>
+<h2 id="get-the-spotify-access-token">Get the Spotify Access Token</h2>
+<p>To get access to Spotify via R I highly recommend installing the <a href="https://www.rcharlie.com/spotifyr/index.html" target="_blank">spotifyr package.</a> They also have excellent instructions at that link for the other steps you need to take outside of R to connect to the Spotify API. <br> <br> There are only three bits I would add: <br> <br> 1. Once you have an app set up inside your Spotify developers account make sure you click on “Users and Access,” add your Spotify account, and save that you added yourself as a “user.” Otherwise you won’t be able to access your own data.<br> <br> 2. If you’re using version control like Github set your client id and client secret separate from any files you push to a public repository<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <br> <br> 3. Use “get_spotify_authorization_code()” rather than “get_spotify_access_token()” if you’re looking to get access to your own data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>access_token</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="retrive-youre-wrong-about-info-from-the-spotify-api">Retrive “You’re Wrong About” Info from the Spotify API</h2>
+<p>To retrieve info about You’re Wrong About from the Spotify API, I first had to get the show’s uinuqe ID number. If you copy the show link from within Spotify, the unique ID number is the text after the “show/” <br> <br> For example, the show link for You’re Wrong About is <a href="https://open.spotify.com/show/1RefFgQB4Lrl7qczcTWA3o?si=1188bd404081494c" class="uri">https://open.spotify.com/show/1RefFgQB4Lrl7qczcTWA3o?si=1188bd404081494c</a> and its unique ID number is “1RefFgQB4Lrl7qczcTWA3o?si=1188bd404081494c” <br> <br></p>
+<p>Then we can use get_show() from the spotifyr package to get the 50 most recent episodes of the show.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ywa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_show.html'>get_show</a></span><span class='op'>(</span><span class='st'>"1RefFgQB4Lrl7qczcTWA3o?si=f200249c966344bf"</span><span class='op'>)</span>
+
+<span class='va'>ywa_df</span> <span class='op'>&lt;-</span> <span class='va'>ywa</span><span class='op'>$</span><span class='va'>episodes</span><span class='op'>$</span><span class='va'>items</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h2 id="prep-to-create-a-plot-based-on-the-youre-wrong-about-logo">Prep to Create a Plot Based on the You’re Wrong About Logo</h2>
+<p>I wanted to create a plot that used the same font and colors as the You’re Wrong About <a href="https://en.wikipedia.org/wiki/File:Logo_for_the_podcast_You%27re_Wrong_About.jpg">logo</a>. <br> <br></p>
+<p><img src="ywa_logo.png" alt="Look how fun this logo is" /> <br> <br> I thought the font would be the hardest part, but luckily some quick googling turned up the show <a href="https://twitter.com/yourewrongabout/status/1257315597295083526" target="_blank">tweeting the exact font they used in their logo.</a> Double good news, it’s available for free <a href="https://www.fontfabric.com/fonts/val/" target="_blank">here!</a> <br> <br> I used the showtext package to load in the font after saving it within my project directory. You can check out instructions around using showtext for custom fonts <a href="https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html" target="_blank">here.</a> <br> <br> I knew there was a <a href="https://github.com/AndreaCirilloAC/paletter" target="_blank">tool that could create color palettes from an image directly</a>, but that project’s Github hasn’t been updated in over 2 years.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> I’m always wary of depending on projects that aren’t actively maintained, so I decided to go a different route. <br> <br> I used a site that will allow you to upload an image and then <a href="https://html-color-codes.info/colors-from-image/" target="_blank">get the exact hex codes of the colors.</a> I then added those colors to plot using the scale_fill_manual() function.</p>
+<h2 id="create-a-plot-based-on-the-youre-wrong-about-logo">Create a Plot Based on the You’re Wrong About Logo</h2>
+<p>After those steps the “only” things that were left were some traditional data wrangling and ggplot gymnastics! You can check out the commented code if you’re interested in the specifics. I ended up being curious about which episodes were longest, and it turns out YWA loves a relatively long Princess Diana episode.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>font_add</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"val"</span>, regular <span class='op'>=</span> <span class='st'>"VAL-UltraBlack.ttf"</span><span class='op'>)</span> <span class='co'># Adding font for use in plots</span>
+
+<span class='fu'>showtext</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/showtext/man/showtext_auto.html'>showtext_auto</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Making sure the font will show up in RStudio</span>
+
+<span class='va'>rhg_cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#1B64A8"</span>, <span class='st'>"#079AD8"</span>, 
+              <span class='st'>"#62BE8B"</span>, <span class='st'>"#F7EE8F"</span>, <span class='st'>"#FF7808"</span>, <span class='st'>"#EF5F7B"</span>, <span class='st'>"#F390AD"</span><span class='op'>)</span> <span class='co'># The colors from the HTML Color Codes Site</span>
+
+<span class='va'>ywa_df</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>duration_ms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Getting longest 7 episodes of the most recent 50</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>duration_ms</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Reversing order to help with later plot aesthetics</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+         duration_mins <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>duration_ms</span> <span class='op'>/</span> <span class='fl'>1000</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>60</span><span class='op'>)</span>, <span class='co'># Converting episode length from ms to mins</span>
+         name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'>case_when</span><span class='op'>(</span>
+           <span class='va'>name</span> <span class='op'>==</span> <span class='st'>"Winter Book Club: The Amityville Horror w. Jamie Loftus (Part 2)"</span> <span class='op'>~</span> <span class='st'>"The Amityville Horror w. Jamie Loftus (Part 2)"</span>,
+           <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>name</span>
+         <span class='op'>)</span><span class='op'>)</span>, <span class='co'># Shortening one really long episode name that made the plot look weird</span>
+         name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>name</span>, levels<span class='op'>=</span><span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Making sure we order episodes by episode length in the plot</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>duration_mins</span>, fill <span class='op'>=</span> <span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Give us a starting point theme</span>
+  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Flip the x and y axes</span>
+  <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>rhg_cols</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Add custom colors of bars</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"Episode Length (mins)"</span>,
+       title <span class='op'>=</span> <span class='st'>"When It Comes to Princess Di, YWA Goes Long"</span>,
+       caption <span class='op'>=</span> <span class='st'>"viz: @mcmullarkey | data: spotifyr"</span>
+       <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>duration_mins</span>, label <span class='op'>=</span> <span class='va'>duration_mins</span><span class='op'>)</span>, hjust <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.4</span>, family <span class='op'>=</span> <span class='st'>"val"</span>, color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>, size <span class='op'>=</span> <span class='fl'>5.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Adding labels with num of mins per episode</span>
+  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>labels <span class='op'>=</span> <span class='va'>comma</span>, limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>119</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#CAD4D5"</span><span class='op'>)</span>, <span class='co'># Putting in grey background for plot</span>
+        legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"val"</span>, color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
+        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#CAD4D5"</span><span class='op'>)</span>, <span class='co'># Putting in grey background for panel</span>
+        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span><span class='op'>)</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of x-axis text</span>
+        axis.title.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span>, <span class='co'># Centering plot title to entire plot</span>
+        plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>, <span class='co'># Moving caption to left corner of plot</span>
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>14</span><span class='op'>)</span>,
+        panel.grid.major <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of gridlines pt 1</span>
+        panel.grid.minor <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of gridlines pt 2</span>
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Getting rid of all axis ticks </span>
+</code></pre>
+</div>
+</details>
+<p><img src="youre-wrong-about-data-viz_files/figure-html5/youre%20wrong%20about%20plot-1.png" width="624" /></p>
+</div>
+<h2 id="thoughts-on-this-process">Thoughts On This Process</h2>
+<p>I really enjoyed solving this puzzle! I’d never created a plot based around a logo before, and adding the element of calling an API made things extra fun. I think in the future I’ll try to make the plots more readable by taking some liberties with the exact hex colors. For example, I think making the background darker makes this image more readable compared to the exact logo colors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ywa_df</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>duration_ms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Getting longest 7 episodes of the most recent 50</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>duration_ms</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Reversing order to help with later plot aesthetics</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+         duration_mins <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>duration_ms</span> <span class='op'>/</span> <span class='fl'>1000</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>60</span><span class='op'>)</span>, <span class='co'># Converting episode length from ms to mins</span>
+         name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'>case_when</span><span class='op'>(</span>
+           <span class='va'>name</span> <span class='op'>==</span> <span class='st'>"Winter Book Club: The Amityville Horror w. Jamie Loftus (Part 2)"</span> <span class='op'>~</span> <span class='st'>"The Amityville Horror w. Jamie Loftus (Part 2)"</span>,
+           <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>name</span>
+         <span class='op'>)</span><span class='op'>)</span>, <span class='co'># Shortening one really long episode name that made the plot look weird</span>
+         name<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>name</span>, levels<span class='op'>=</span><span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Making sure we order episodes by episode length in the plot</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>duration_mins</span>, fill <span class='op'>=</span> <span class='va'>name</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Give us a starting point theme</span>
+  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Flip the x and y axes</span>
+  <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>rhg_cols</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Add custom colors of bars</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"Episode Length (mins)"</span>,
+       title <span class='op'>=</span> <span class='st'>"When It Comes to Princess Di, YWA Goes Long"</span>,
+       caption <span class='op'>=</span> <span class='st'>"viz: @mcmullarkey | data: spotifyr"</span>
+       <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>duration_mins</span>, label <span class='op'>=</span> <span class='va'>duration_mins</span><span class='op'>)</span>, hjust <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.4</span>, family <span class='op'>=</span> <span class='st'>"val"</span>, color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>, size <span class='op'>=</span> <span class='fl'>5.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Adding labels with num of mins per episode</span>
+  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>labels <span class='op'>=</span> <span class='va'>comma</span>, limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>119</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"grey45"</span><span class='op'>)</span>,
+        legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"val"</span>, color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
+        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"grey45"</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#FFFFFF"</span><span class='op'>)</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of x-axis text</span>
+        axis.title.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span>, <span class='co'># Centering plot title to entire plot</span>
+        plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>, <span class='co'># Moving caption to left corner of plot</span>
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>14</span><span class='op'>)</span>,
+        panel.grid.major <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of gridlines pt 1</span>
+        panel.grid.minor <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># Getting rid of gridlines pt 2</span>
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Getting rid of all axis ticks </span>
+</code></pre>
+</div>
+</details>
+<p><img src="youre-wrong-about-data-viz_files/figure-html5/improved%20youre%20wrong%20about%20plot-1.png" width="624" /></p>
+</div>
+<p>I’m sure there are other potential improvments too, and I look forward to learning more as I go! I’m also looking forward to continuing to leverage the Spotify API in new, interesting ways. <br> <br></p>
+<p>If you take this template and make any of your own logo plots <a href="https://twitter.com/mcmullarkey" target="_blank">please tweet them at me!</a> I love seeing how others take, remix, and improve upon my code. I really enjoyed seeing the plots by <a href="https://twitter.com/sofigs_gt/status/1480254326325055507" target="_blank">@sofi_gt</a> and <a href="https://twitter.com/keireton/status/1480693205288960000" target="_blank">@keireton</a> that built upon my previous Spotify-related posts. Definitely check their work out and I look forward to seeing more!</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Otherwise your app’s api will be exposed which isn’t great for security purposes<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>However, that’s not necessary for this post since we aren’t using data from any particular user<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>The limit on episodes happens at the Spotify API level, and if you need more episodes from one call you can try implementing something like this <a href="https://github.com/charlie86/spotifyr/issues/174" class="uri">https://github.com/charlie86/spotifyr/issues/174</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Which is completely understandable! People shouldn’t have to maintain every open source tool they create forever<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
