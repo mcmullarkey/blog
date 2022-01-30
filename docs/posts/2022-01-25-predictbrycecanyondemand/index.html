@@ -55,7 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,7 +76,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -84,39 +84,40 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
-  <!--radix_placeholder_meta_tags-->
-<title>Michael Mullarkey: Get Your Spotify Data via R Right Away</title>
 
-<meta property="description" itemprop="description" content="Using the Spotify API to Find Out How Danceable My Top Artists Are"/>
+  <!--radix_placeholder_meta_tags-->
+<title>Michael Mullarkey: Using R and Python Together to Forecast Visitors to Acadia National Park</title>
+
+<meta property="description" itemprop="description" content="R and Python can be friends"/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2022-01-07"/>
-<meta property="article:created" itemprop="dateCreated" content="2022-01-07"/>
+<meta property="article:published" itemprop="datePublished" content="2022-01-25"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-01-25"/>
 <meta name="article:author" content="Michael Mullarkey, PhD (Click to return to my website)"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Michael Mullarkey: Get Your Spotify Data via R Right Away"/>
+<meta property="og:title" content="Michael Mullarkey: Using R and Python Together to Forecast Visitors to Acadia National Park"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Using the Spotify API to Find Out How Danceable My Top Artists Are"/>
+<meta property="og:description" content="R and Python can be friends"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Michael Mullarkey"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Michael Mullarkey: Get Your Spotify Data via R Right Away"/>
-<meta property="twitter:description" content="Using the Spotify API to Find Out How Danceable My Top Artists Are"/>
+<meta property="twitter:title" content="Michael Mullarkey: Using R and Python Together to Forecast Visitors to Acadia National Park"/>
+<meta property="twitter:description" content="R and Python can be friends"/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Get Your Spotify Data via R Right Away"]},{"type":"character","attributes":{},"value":["Using the Spotify API to Find Out How Danceable My Top Artists Are"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Michael Mullarkey, PhD (Click to return to my website)"]},{"type":"character","attributes":{},"value":["https://mcmullarkey.github.io"]}]}]},{"type":"character","attributes":{},"value":["01-07-2022"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Using R and Python Together to Forecast Visitors to Acadia National Park"]},{"type":"character","attributes":{},"value":["R and Python can be friends"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Michael Mullarkey, PhD (Click to return to my website)"]},{"type":"character","attributes":{},"value":["https://mcmullarkey.github.io"]}]}]},{"type":"character","attributes":{},"value":["2022-01-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["spotify-api-r_files/anchor-4.2.2/anchor.min.js","spotify-api-r_files/bowser-1.9.3/bowser.min.js","spotify-api-r_files/distill-2.2.21/template.v2.js","spotify-api-r_files/figure-html5/distribution with dot plot-1.png","spotify-api-r_files/figure-html5/map through visualizations-1.png","spotify-api-r_files/figure-html5/map through visualizations-2.png","spotify-api-r_files/figure-html5/map through visualizations-3.png","spotify-api-r_files/figure-html5/map through visualizations-4.png","spotify-api-r_files/figure-html5/map through visualizations-5.png","spotify-api-r_files/figure-html5/map through visualizations-6.png","spotify-api-r_files/figure-html5/map through visualizations-7.png","spotify-api-r_files/figure-html5/traditional scatter plot looking at danceability and instrumentalness-1.png","spotify-api-r_files/figure-html5/unnamed-chunk-1-1.png","spotify-api-r_files/figure-html5/unnamed-chunk-2-1.png","spotify-api-r_files/figure-html5/unnamed-chunk-3-1.png","spotify-api-r_files/figure-html5/unnamed-chunk-4-1.png","spotify-api-r_files/figure-html5/unnamed-chunk-5-1.png","spotify-api-r_files/figure-html5/using dot plot version of looking at an association between variables-1.png","spotify-api-r_files/header-attrs-2.8/header-attrs.js","spotify-api-r_files/jquery-1.11.3/jquery.min.js","spotify-api-r_files/popper-2.6.0/popper.min.js","spotify-api-r_files/tippy-6.2.7/tippy-bundle.umd.min.js","spotify-api-r_files/tippy-6.2.7/tippy-light-border.css","spotify-api-r_files/tippy-6.2.7/tippy.css","spotify-api-r_files/tippy-6.2.7/tippy.umd.min.js","spotify-api-r_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["nps_conda_environment.yml","predictbrycecanyondemand_files/anchor-4.2.2/anchor.min.js","predictbrycecanyondemand_files/bowser-1.9.3/bowser.min.js","predictbrycecanyondemand_files/distill-2.2.21/template.v2.js","predictbrycecanyondemand_files/figure-html5/look at visits just in 2019-1.png","predictbrycecanyondemand_files/figure-html5/look at visits just in 2020-1.png","predictbrycecanyondemand_files/figure-html5/looking at visits to acadia over entire date range-1.png","predictbrycecanyondemand_files/figure-html5/plot time series forecast-1.png","predictbrycecanyondemand_files/header-attrs-2.11/header-attrs.js","predictbrycecanyondemand_files/jquery-3.6.0/jquery-3.6.0.js","predictbrycecanyondemand_files/jquery-3.6.0/jquery-3.6.0.min.js","predictbrycecanyondemand_files/jquery-3.6.0/jquery-3.6.0.min.map","predictbrycecanyondemand_files/popper-2.6.0/popper.min.js","predictbrycecanyondemand_files/tippy-6.2.7/tippy-bundle.umd.min.js","predictbrycecanyondemand_files/tippy-6.2.7/tippy-light-border.css","predictbrycecanyondemand_files/tippy-6.2.7/tippy.css","predictbrycecanyondemand_files/tippy-6.2.7/tippy.umd.min.js","predictbrycecanyondemand_files/webcomponents-2.0.0/webcomponents.js","Visitation by Month.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2358,8 +2359,8 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.8/header-attrs.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2379,7 +2380,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Get Your Spotify Data via R Right Away","description":"Using the Spotify API to Find Out How Danceable My Top Artists Are","authors":[{"author":"Michael Mullarkey, PhD (Click to return to my website)","authorURL":"https://mcmullarkey.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-07T00:00:00.000-05:00","citationText":"website), 2022"}
+{"title":"Using R and Python Together to Forecast Visitors to Acadia National Park","description":"R and Python can be friends","authors":[{"author":"Michael Mullarkey, PhD (Click to return to my website)","authorURL":"https://mcmullarkey.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-25T00:00:00.000-05:00","citationText":"website), 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2404,484 +2405,99 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Get Your Spotify Data via R Right Away</h1>
+<h1>Using R and Python Together to Forecast Visitors to Acadia National Park</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Using the Spotify API to Find Out How Danceable My Top Artists Are</p></p>
+<p><p>R and Python can be friends</p></p>
 </div>
 
 <div class="d-byline">
   Michael Mullarkey, PhD (Click to return to my website) <a href="https://mcmullarkey.github.io" class="uri">https://mcmullarkey.github.io</a> 
   
-<br/>01-07-2022
+<br/>2022-01-25
 </div>
 
 <div class="d-article">
-<h2 id="get-your-spotify-data-in-10-minutes-or-less">Get Your Spotify Data in 10 Minutes or Less</h2>
-<p><a href="https://mcmullarkey.github.io/mcm-blog/posts/2022-01-04-tidy-your-spotify-data/" target="_blank">My previous post working with Spotify data</a> required requesting the data from Spotify and waiting. Patience is a virtue in a lot of situations, and this isn’t one of them. <br> <br> Here’s a post on using the Spotify API via R to access to your data right away, figuring out your all-time top artists, and learning more about the artists you’ve spent the most time with on your Spotify journey.</p>
-<h2 id="load-packages">Load Packages</h2>
+<h1 id="i-dont-wanna-fight-no-more">I Don’t Wanna Fight No More<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+<p>Nothing gets data people up in the morning like a good language war. R vs. Python is one of the more common ones, and I get it. They often serve similar purposes for data science<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and each have definite strengths.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <br> <br> The good news is at least some data scientists know a little of both languages and could take advantage of both languages’ strengths given the right opportunities. This post will explore how to play to the strengths of R and Python to forecast visitors to Acadia National Park.</p>
+<h1 id="getting-our-environment-set-up">Getting Our Environment Set Up</h1>
+<p>Setting up our environment is at least half the battle. Until recently I was almost exclusively using <a href="https://colab.research.google.com/" target="_blank">Google Colab</a> for Python dev because it makes environment setup trivial.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> But to create this blog post I needed R and Python to work within the RStudio IDE on my local machine.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <br> <br> Luckily the <code>reticulate</code> <a href="https://rstudio.github.io/reticulate/index.html" target="_blank">package</a> allows us to interface with Python from RStudio. They have a great <a href="https://rstudio.github.io/reticulate/articles/versions.html" target="_blank">tutorial article</a> on how to connect to your preferred version of Python. There are lots of options for how to sync up RStudio and Python! <br> <br> I have found it easiest to create a project-specific <code>conda</code> environment using a .yml file once,<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> then call that environment with <code>use_condaenv()</code> each time I open the project. Regardless of what technique you use to interface with Python you can use <code>py_config()</code> to double check you’re pointing at the version of Python you want.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/charlie86/spotifyr'>spotifyr</a></span><span class='op'>)</span> <span class='co'># API</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> <span class='co'># For tidying/plotting</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span> <span class='co'># For better looking tables</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr/'>skimr</a></span><span class='op'>)</span> <span class='co'># For data summary</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mjskay.github.io/ggdist/'>ggdist</a></span><span class='op'>)</span> <span class='co'># Dot plots!</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rstudio.github.io/reticulate/'>reticulate</a></span><span class='op'>)</span>
+
+<span class='co'># Only run this once to create the environment</span>
+<span class='co'># conda_create("nps-reticulate-yml", environment = "nps_conda_environment.yml")</span>
+
+<span class='fu'><a href='https://rstudio.github.io/reticulate/reference/use_python.html'>use_condaenv</a></span><span class='op'>(</span><span class='st'>"nps-reticulate-yml"</span><span class='op'>)</span>
+
+<span class='co'># Commented out so I don't show a lot of info on my computer/paths</span>
+<span class='co'># py_config()</span>
+</code></pre>
+</div>
+</div>
+<p>Once I set up the environment I start with my Python imports…</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sktime.forecasting.arima <span class="im">import</span> AutoARIMA</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sktime.utils.plotting <span class="im">import</span> plot_series</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sktime.forecasting.model_selection <span class="im">import</span> temporal_train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> ElasticNet</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sktime.transformations.panel.tsfresh <span class="im">import</span> TSFreshFeatureExtractor</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sktime.datasets <span class="im">import</span> load_arrow_head, load_basic_motions</span></code></pre></div>
+</div>
+<p>And then load my R packages.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> <span class='co'># For tidying/plotting</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sfirke/janitor'>janitor</a></span><span class='op'>)</span> <span class='co'># For help cleaning</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span> <span class='co'># For working with dates</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span> <span class='co'># Better tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/yixuan/showtext'>showtext</a></span><span class='op'>)</span> <span class='co'># Custom fonts for plots</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://scales.r-lib.org'>scales</a></span><span class='op'>)</span> <span class='co'># For adding different scales</span>
 </code></pre>
 </div>
 </div>
-<h2 id="get-the-spotify-access-token">Get the Spotify Access Token</h2>
-<p>To get access to Spotify via R I highly recommend installing the <a href="https://www.rcharlie.com/spotifyr/index.html" target="_blank">spotifyr package.</a> They also have excellent instructions at that link for the other steps you need to take outside of R to connect to the Spotify API. <br> <br> There are only three bits I would add: <br> <br> 1. Once you have an app set up inside your Spotify developers account make sure you click on “Users and Access,” add your Spotify account, and save that you added yourself as a “user.” Otherwise you won’t be able to access your own data.<br> <br> 2. If you’re using version control like Github set your client id and client secret separate from any files you push to a public repository<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <br> <br> 3. Use “get_spotify_authorization_code()” rather than “get_spotify_access_token()” if you’re looking to get access to your own data<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>access_token</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h2 id="get-my-top-10-artists">Get My Top 10 Artists</h2>
-<p>Just like in my last post, I wanted to figure out things that aren’t touched on by Spotify Wrapped at the end of each year. And while they touched on our most listened artists of the decade back in 2019, the world has changed a teensy bit since then. I figured I’d check in on my top artists as of right now, and the results are here for y’all to roast.</p>
+<h1 id="load-and-tidy-our-data">Load and Tidy Our Data</h1>
+<p>I’m going to use R to load and tidy the data. I got the data for monthly visitors to Acadia National Park<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> since 1979 from the National Parks Service. Their tables are a bit weird and resistant to being pulled via a web scraper like <code>rvest</code> so I ended up downloading the data as a .csv from <a href="https://irma.nps.gov/STATS/SSRSReports/Park%20Specific%20Reports/Visitation%20by%20Month?Park=ACAD" target="_blank">here</a> - though check this footnote<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> for necessary details. I’m using a minimal gt table to show what the tidied data looks like now.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>top_artists</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_my_top_artists_or_tracks.html'>get_my_top_artists_or_tracks</a></span><span class='op'>(</span>type <span class='op'>=</span> <span class='st'>'artists'</span>, time_range <span class='op'>=</span> <span class='st'>'long_term'</span>, limit <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span>Artist <span class='op'>=</span> <span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>`All-Time Listened Rank` <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>acadia_init</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Visitation by Month.csv"</span>, skip <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='va'>top_artists</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<div id="zgneqtzvqk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
+<span class='va'>acadia</span> <span class='op'>&lt;-</span> <span class='va'>acadia_init</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
+    cols <span class='op'>=</span> <span class='op'>-</span><span class='va'>year</span>,
+    names_to <span class='op'>=</span> <span class='st'>"month"</span>,
+    values_to <span class='op'>=</span> <span class='st'>"visitors"</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/unite.html'>unite</a></span><span class='op'>(</span><span class='va'>date</span>, <span class='va'>year</span><span class='op'>:</span><span class='va'>month</span>, sep <span class='op'>=</span> <span class='st'>"-"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    date <span class='op'>=</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd.html'>ym</a></span><span class='op'>(</span><span class='va'>date</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>date</span><span class='op'>)</span> 
 
-#zgneqtzvqk .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#zgneqtzvqk .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 4px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#zgneqtzvqk .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#zgneqtzvqk .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#zgneqtzvqk .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#zgneqtzvqk .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#zgneqtzvqk .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#zgneqtzvqk .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#zgneqtzvqk .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#zgneqtzvqk .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#zgneqtzvqk .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#zgneqtzvqk .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#zgneqtzvqk .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#zgneqtzvqk .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgneqtzvqk .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zgneqtzvqk .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#zgneqtzvqk .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
-
-#zgneqtzvqk .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zgneqtzvqk .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
-
-#zgneqtzvqk .gt_left {
-  text-align: left;
-}
-
-#zgneqtzvqk .gt_center {
-  text-align: center;
-}
-
-#zgneqtzvqk .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#zgneqtzvqk .gt_font_normal {
-  font-weight: normal;
-}
-
-#zgneqtzvqk .gt_font_bold {
-  font-weight: bold;
-}
-
-#zgneqtzvqk .gt_font_italic {
-  font-style: italic;
-}
-
-#zgneqtzvqk .gt_super {
-  font-size: 65%;
-}
-
-#zgneqtzvqk .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 65%;
-}
-</style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Artist</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">All-Time Listened Rank</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Luca Stricagnoli</td>
-<td class="gt_row gt_right">1</td></tr>
-    <tr><td class="gt_row gt_left">Vasudeva</td>
-<td class="gt_row gt_right">2</td></tr>
-    <tr><td class="gt_row gt_left">Lil Nas X</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_left">Des Rocs</td>
-<td class="gt_row gt_right">4</td></tr>
-    <tr><td class="gt_row gt_left">KALEO</td>
-<td class="gt_row gt_right">5</td></tr>
-    <tr><td class="gt_row gt_left">flor</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_left">Matt Maeson</td>
-<td class="gt_row gt_right">7</td></tr>
-    <tr><td class="gt_row gt_left">WALK THE MOON</td>
-<td class="gt_row gt_right">8</td></tr>
-    <tr><td class="gt_row gt_left">Smallpools</td>
-<td class="gt_row gt_right">9</td></tr>
-    <tr><td class="gt_row gt_left">Stop Light Observations</td>
-<td class="gt_row gt_right">10</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-<h2 id="get-audio-features-from-my-top-artists">Get Audio Features From My Top Artists</h2>
-<p>But I’m not satisfied with just knowing who my top artists are. I want to know what they’ve been up to. Luckily, Spotify’s API (unlike the streaming history data you can request) also gives songs scores on fun metrics like danceability and instrumentalness. I wrote a function<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> to get those metrics for all the tracks my top artists have on Spotify. <br> <br> Heads up if you’re doing something similar yourself: You may want to use the artist ID rather than counting on the artist name to translate properly. <a href="https://streamingcharts.com.au/2018/04/find-spotify-id/" target="_blank">Here’s a quick tutorial on how to find any given artist’s id</a> <br> <br> My first attempt at creating this data frame had “Florida Georgia Line” instead of “flor.” I think folks should listen to whatever makes them happy, and a “Top Artists” data frame with Florida Georgia Line wouldn’t be an accurate reflection of what I’ve been listening to most!</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Get the features I want once (Good practice before you try to write a function)</span>
-
-<span class='va'>luca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_artist_audio_features.html'>get_artist_audio_features</a></span><span class='op'>(</span><span class='st'>'Luca Stricagnoli'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>artist_name</span>, <span class='va'>track_name</span>, <span class='va'>album_name</span>, <span class='va'>key_mode</span>, <span class='va'>album_release_year</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>danceability</span><span class='op'>:</span><span class='va'>tempo</span><span class='op'>)</span><span class='op'>)</span> 
-
-<span class='co'># Map through all top artists to get all the features for my top ten artists by listening time</span>
-
-<span class='co'># First get a list of artists to map through we can use</span>
-
-<span class='va'>top_ten_artists</span> <span class='op'>&lt;-</span> <span class='va'>top_artists</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Artist</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>Artist <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
-    <span class='va'>Artist</span> <span class='op'>==</span> <span class='st'>"flor"</span> <span class='op'>~</span> <span class='st'>"0szWPxzzE8DVEfXFRCLBUb"</span>, <span class='co'># Got Artist ID from this resource https://streamingcharts.com.au/2018/04/find-spotify-id/</span>
-    <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>Artist</span>
-  <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'>## If I don't do this I end up with Florida Georgia Line instead of flor in the data frame</span>
-  <span class='fu'>deframe</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># Then map through all of them (perform the function for each artist) and put the results into a data frame</span>
-
-<span class='va'>top_ten_df</span> <span class='op'>&lt;-</span> <span class='fu'>map_dfr</span><span class='op'>(</span><span class='va'>top_ten_artists</span>, <span class='op'>~</span><span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/spotifyr/man/get_artist_audio_features.html'>get_artist_audio_features</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>artist_name</span>, <span class='va'>track_name</span>, <span class='va'>album_name</span>, <span class='va'>key_mode</span>, <span class='va'>album_release_year</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>danceability</span><span class='op'>:</span><span class='va'>tempo</span><span class='op'>)</span><span class='op'>)</span> 
-<span class='op'>}</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<h2 id="skim-the-data">Skim the Data</h2>
-<p>I nearly always use the “skim” function from the skimr package on any new data frame I’ve created. The function gives me a lot of information at once and helps me find implausible values/distributions much more quickly than other tools I’ve tried.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <br> <br></p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>top_ten_df</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>acadia</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
-<div id="rjylkwwvut" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vwsdasswlx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rjylkwwvut .gt_table {
+#vwsdasswlx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2906,7 +2522,7 @@ Show code
   border-left-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_heading {
+#vwsdasswlx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2918,7 +2534,7 @@ Show code
   border-right-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_title {
+#vwsdasswlx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2928,23 +2544,23 @@ Show code
   border-bottom-width: 0;
 }
 
-#rjylkwwvut .gt_subtitle {
+#vwsdasswlx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#rjylkwwvut .gt_bottom_border {
+#vwsdasswlx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_col_headings {
+#vwsdasswlx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2959,7 +2575,7 @@ Show code
   border-right-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_col_heading {
+#vwsdasswlx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2979,7 +2595,7 @@ Show code
   overflow-x: hidden;
 }
 
-#rjylkwwvut .gt_column_spanner_outer {
+#vwsdasswlx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2991,27 +2607,27 @@ Show code
   padding-right: 4px;
 }
 
-#rjylkwwvut .gt_column_spanner_outer:first-child {
+#vwsdasswlx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rjylkwwvut .gt_column_spanner_outer:last-child {
+#vwsdasswlx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rjylkwwvut .gt_column_spanner {
+#vwsdasswlx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#rjylkwwvut .gt_group_heading {
+#vwsdasswlx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3033,7 +2649,7 @@ Show code
   vertical-align: middle;
 }
 
-#rjylkwwvut .gt_empty_group_heading {
+#vwsdasswlx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3048,15 +2664,15 @@ Show code
   vertical-align: middle;
 }
 
-#rjylkwwvut .gt_from_md > :first-child {
+#vwsdasswlx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rjylkwwvut .gt_from_md > :last-child {
+#vwsdasswlx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rjylkwwvut .gt_row {
+#vwsdasswlx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3075,7 +2691,7 @@ Show code
   overflow-x: hidden;
 }
 
-#rjylkwwvut .gt_stub {
+#vwsdasswlx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3087,7 +2703,7 @@ Show code
   padding-left: 12px;
 }
 
-#rjylkwwvut .gt_summary_row {
+#vwsdasswlx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3097,7 +2713,7 @@ Show code
   padding-right: 5px;
 }
 
-#rjylkwwvut .gt_first_summary_row {
+#vwsdasswlx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3107,7 +2723,7 @@ Show code
   border-top-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_grand_summary_row {
+#vwsdasswlx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3117,7 +2733,7 @@ Show code
   padding-right: 5px;
 }
 
-#rjylkwwvut .gt_first_grand_summary_row {
+#vwsdasswlx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3127,11 +2743,11 @@ Show code
   border-top-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_striped {
+#vwsdasswlx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rjylkwwvut .gt_table_body {
+#vwsdasswlx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3140,7 +2756,7 @@ Show code
   border-bottom-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_footnotes {
+#vwsdasswlx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3154,13 +2770,13 @@ Show code
   border-right-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_footnote {
+#vwsdasswlx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#rjylkwwvut .gt_sourcenotes {
+#vwsdasswlx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3174,41 +2790,41 @@ Show code
   border-right-color: #D3D3D3;
 }
 
-#rjylkwwvut .gt_sourcenote {
+#vwsdasswlx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#rjylkwwvut .gt_left {
+#vwsdasswlx .gt_left {
   text-align: left;
 }
 
-#rjylkwwvut .gt_center {
+#vwsdasswlx .gt_center {
   text-align: center;
 }
 
-#rjylkwwvut .gt_right {
+#vwsdasswlx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rjylkwwvut .gt_font_normal {
+#vwsdasswlx .gt_font_normal {
   font-weight: normal;
 }
 
-#rjylkwwvut .gt_font_bold {
+#vwsdasswlx .gt_font_bold {
   font-weight: bold;
 }
 
-#rjylkwwvut .gt_font_italic {
+#vwsdasswlx .gt_font_italic {
   font-style: italic;
 }
 
-#rjylkwwvut .gt_super {
+#vwsdasswlx .gt_super {
   font-size: 65%;
 }
 
-#rjylkwwvut .gt_footnote_marks {
+#vwsdasswlx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3218,453 +2834,734 @@ Show code
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">skim_type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">n_missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">complete_rate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">character.min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">character.max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">character.empty</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">character.n_unique</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">character.whitespace</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.sd</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.p0</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.p25</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.p50</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.p75</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">numeric.p100</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">numeric.hist</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">visitors</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">character</td>
-<td class="gt_row gt_left">artist_name</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">23</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_left">NA</td></tr>
-    <tr><td class="gt_row gt_left">character</td>
-<td class="gt_row gt_left">track_name</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">81</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">344</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_left">NA</td></tr>
-    <tr><td class="gt_row gt_left">character</td>
-<td class="gt_row gt_left">album_name</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">38</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">32</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_left">NA</td></tr>
-    <tr><td class="gt_row gt_left">character</td>
-<td class="gt_row gt_left">key_mode</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">24</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_left">NA</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">album_release_year</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">2017.09287257</td>
-<td class="gt_row gt_right">3.07588247</td>
-<td class="gt_row gt_right">2.0120e+03</td>
-<td class="gt_row gt_right">2015.00000</td>
-<td class="gt_row gt_right">2.0170e+03</td>
-<td class="gt_row gt_right">2020.00000</td>
-<td class="gt_row gt_right">2021.000</td>
-<td class="gt_row gt_left">▅▅▆▃▇</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">danceability</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.53025918</td>
-<td class="gt_row gt_right">0.14594262</td>
-<td class="gt_row gt_right">1.5000e-01</td>
-<td class="gt_row gt_right">0.42100</td>
-<td class="gt_row gt_right">5.4000e-01</td>
-<td class="gt_row gt_right">0.62900</td>
-<td class="gt_row gt_right">0.929</td>
-<td class="gt_row gt_left">▂▅▇▅▁</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">energy</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.68012505</td>
-<td class="gt_row gt_right">0.20302010</td>
-<td class="gt_row gt_right">8.0900e-02</td>
-<td class="gt_row gt_right">0.53450</td>
-<td class="gt_row gt_right">7.1900e-01</td>
-<td class="gt_row gt_right">0.84900</td>
-<td class="gt_row gt_right">0.979</td>
-<td class="gt_row gt_left">▁▂▅▆▇</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">key</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">5.12742981</td>
-<td class="gt_row gt_right">3.80859180</td>
-<td class="gt_row gt_right">0.0000e+00</td>
-<td class="gt_row gt_right">1.00000</td>
-<td class="gt_row gt_right">5.0000e+00</td>
-<td class="gt_row gt_right">9.00000</td>
-<td class="gt_row gt_right">11.000</td>
-<td class="gt_row gt_left">▇▂▂▃▆</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">loudness</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">-6.68563283</td>
-<td class="gt_row gt_right">2.69306783</td>
-<td class="gt_row gt_right">-2.1142e+01</td>
-<td class="gt_row gt_right">-7.77900</td>
-<td class="gt_row gt_right">-6.2370e+00</td>
-<td class="gt_row gt_right">-4.86800</td>
-<td class="gt_row gt_right">-1.830</td>
-<td class="gt_row gt_left">▁▁▂▇▆</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">mode</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.66090713</td>
-<td class="gt_row gt_right">0.47391347</td>
-<td class="gt_row gt_right">0.0000e+00</td>
-<td class="gt_row gt_right">0.00000</td>
-<td class="gt_row gt_right">1.0000e+00</td>
-<td class="gt_row gt_right">1.00000</td>
-<td class="gt_row gt_right">1.000</td>
-<td class="gt_row gt_left">▅▁▁▁▇</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">speechiness</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.06710216</td>
-<td class="gt_row gt_right">0.07273348</td>
-<td class="gt_row gt_right">2.4300e-02</td>
-<td class="gt_row gt_right">0.03500</td>
-<td class="gt_row gt_right">4.3700e-02</td>
-<td class="gt_row gt_right">0.06220</td>
-<td class="gt_row gt_right">0.626</td>
-<td class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">acousticness</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.19288242</td>
-<td class="gt_row gt_right">0.28305396</td>
-<td class="gt_row gt_right">4.1100e-05</td>
-<td class="gt_row gt_right">0.00327</td>
-<td class="gt_row gt_right">4.0200e-02</td>
-<td class="gt_row gt_right">0.28100</td>
-<td class="gt_row gt_right">0.965</td>
-<td class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">instrumentalness</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.17228654</td>
-<td class="gt_row gt_right">0.33253072</td>
-<td class="gt_row gt_right">0.0000e+00</td>
-<td class="gt_row gt_right">0.00000</td>
-<td class="gt_row gt_right">5.7600e-05</td>
-<td class="gt_row gt_right">0.03145</td>
-<td class="gt_row gt_right">0.978</td>
-<td class="gt_row gt_left">▇▁▁▁▂</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">liveness</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.20885292</td>
-<td class="gt_row gt_right">0.18722280</td>
-<td class="gt_row gt_right">3.5300e-02</td>
-<td class="gt_row gt_right">0.09745</td>
-<td class="gt_row gt_right">1.2500e-01</td>
-<td class="gt_row gt_right">0.26600</td>
-<td class="gt_row gt_right">0.994</td>
-<td class="gt_row gt_left">▇▂▁▁▁</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">valence</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">0.42571685</td>
-<td class="gt_row gt_right">0.21165053</td>
-<td class="gt_row gt_right">3.9100e-02</td>
-<td class="gt_row gt_right">0.26900</td>
-<td class="gt_row gt_right">4.0000e-01</td>
-<td class="gt_row gt_right">0.56950</td>
-<td class="gt_row gt_right">0.964</td>
-<td class="gt_row gt_left">▅▇▆▃▂</td></tr>
-    <tr><td class="gt_row gt_left">numeric</td>
-<td class="gt_row gt_left">tempo</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">128.14024406</td>
-<td class="gt_row gt_right">27.23182764</td>
-<td class="gt_row gt_right">6.0008e+01</td>
-<td class="gt_row gt_right">109.67000</td>
-<td class="gt_row gt_right">1.2704e+02</td>
-<td class="gt_row gt_right">146.16800</td>
-<td class="gt_row gt_right">196.739</td>
-<td class="gt_row gt_left">▁▅▇▃▂</td></tr>
+    <tr><td class="gt_row gt_left">1979-01-01</td>
+<td class="gt_row gt_right">6011</td></tr>
+    <tr><td class="gt_row gt_left">1979-02-01</td>
+<td class="gt_row gt_right">5243</td></tr>
+    <tr><td class="gt_row gt_left">1979-03-01</td>
+<td class="gt_row gt_right">11165</td></tr>
+    <tr><td class="gt_row gt_left">1979-04-01</td>
+<td class="gt_row gt_right">219351</td></tr>
+    <tr><td class="gt_row gt_left">1979-05-01</td>
+<td class="gt_row gt_right">339416</td></tr>
+    <tr><td class="gt_row gt_left">1979-06-01</td>
+<td class="gt_row gt_right">543205</td></tr>
   </tbody>
   
   
 </table>
 </div>
 </div>
-<h2 id="visualize-danceability-of-my-top-artists-tracks">Visualize Danceability of My Top Artists’ Tracks</h2>
-<p>I wanted to get a sense of how danceable my top artists are overall. This approximatey normally distributed distribution means my top artists have some range when it comes to danceability, and most of their songs are close to the “middle of the road” on the metric.</p>
+<h1 id="visualizing-monthly-visits-to-acadia-since-1979">Visualizing Monthly Visits to Acadia Since 1979</h1>
+<p>We’re sticking with <code>R</code> for now and creating a few ggplots. Let’s start with the full dataset and see how monthly visitors fluctuate.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>font_add_google</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Orbitron"</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/sysfonts/man/font_add_google.html'>font_add_google</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Orbitron"</span>,
                 family <span class='op'>=</span> <span class='st'>"orbitron"</span><span class='op'>)</span>
 
 <span class='fu'>showtext</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/showtext/man/showtext_auto.html'>showtext_auto</a></span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='va'>top_ten_df</span> <span class='op'>%&gt;%</span> 
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>danceability</span>, color <span class='op'>=</span> <span class='va'>danceability</span>, fill <span class='op'>=</span> <span class='va'>danceability</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='http://mjskay.github.io/ggdist/reference/geom_dotsinterval.html'>geom_dots</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_color_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_fill_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Danceability"</span>,
-       y <span class='op'>=</span> <span class='st'>""</span>,
-       title <span class='op'>=</span> <span class='st'>"My Top Artists' Tracks Have A Wide Range of Danceability"</span>,
+<span class='va'>acadia</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>date</span>, <span class='va'>visitors</span>, color <span class='op'>=</span> <span class='st'>"#D5552C"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_dark</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"# of Visitors"</span>,
+       title <span class='op'>=</span> <span class='st'>"Visits to Acadia National Park are Highly Seasonal"</span>,
        subtitle <span class='op'>=</span> <span class='st'>""</span>
        <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>comma</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
         legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
-        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
-        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
-        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
-        axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+        panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
         plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> 
 </code></pre>
 </div>
 </details>
-<p><img src="spotify-api-r_files/figure-html5/distribution%20with%20dot%20plot-1.png" width="624" /></p>
+<p><img src="predictbrycecanyondemand_files/figure-html5/looking%20at%20visits%20to%20acadia%20over%20entire%20date%20range-1.png" width="624" /></p>
 </div>
-<h2 id="visualize-danceability-separately-by-each-of-my-top-artists">Visualize Danceability Separately By Each of My Top Artists</h2>
-<p>However, when I break down danceability by artist we see some artists are likely more danceable than others. I’m not doing a formal test here, and I’m also not surprised that Lil Nas X seems way more danceable than Vasudeva<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p>This data looks highly seasonal to say the least! If you’re not familiar with Acadia it’s in the far northeast of the US, so the winters are <em>harsh</em>. We can see this understandable seasonality even more starkly if we zoom in on the most recent non-pandemic-marred year.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>top_ten_df</span> <span class='op'>%&gt;%</span> 
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>danceability</span>, color <span class='op'>=</span> <span class='va'>danceability</span>, fill <span class='op'>=</span> <span class='va'>danceability</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='http://mjskay.github.io/ggdist/reference/geom_dotsinterval.html'>geom_dots</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_color_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_fill_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
-       y <span class='op'>=</span> <span class='st'>""</span>,
-       title <span class='op'>=</span> <span class='st'>"But Some of My Top Artists Seem More Danceable Than Others"</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>acadia</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>date</span> <span class='op'>&gt;</span> <span class='st'>"2018-12-01"</span> <span class='op'>&amp;</span> <span class='va'>date</span> <span class='op'>&lt;</span> <span class='st'>"2020-01-01"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>date</span>, <span class='va'>visitors</span>, color <span class='op'>=</span> <span class='st'>"#D5552C"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_dark</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"# of Visitors"</span>,
+       title <span class='op'>=</span> <span class='st'>"Even Easier to See Seasonality When We Look at 2019"</span>,
        subtitle <span class='op'>=</span> <span class='st'>""</span>
        <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>comma</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
         legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
-        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
-        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
-        axis.text.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
-        axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
-        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>artist_name</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<p><img src="spotify-api-r_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
-</div>
-<h2 id="a-traditional-scatter-plot-doesnt-help-us-much-when-one-variable-is-skewed">A Traditional Scatter Plot Doesn’t Help Us Much When One Variable Is Skewed</h2>
-<p>I know at least some of my top artists are heavily instrumental, and I was curious how that related to danceability. Since both outcomes are continuous, the canonical plot to do is a scatter plot. I added a regression line predicting instrumentalness using danceability<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> but this plot still isn’t as helpful as I’d like it to be. <br> <br> One reason for this is that instrumentalness is an incredibly skewed variable among my top artists. Some of their tracks have very high instrumentalness scores, while a vast majority have scores either at or near 0. We could try transforming instrumentalness to reduce skew, and that makes substantive interpretation a bit trickier.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>top_ten_df</span> <span class='op'>%&gt;%</span> 
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>danceability</span>, <span class='va'>instrumentalness</span>, color <span class='op'>=</span> <span class='va'>danceability</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_color_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_jitter</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, formula <span class='op'>=</span> <span class='st'>"y~x"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Danceability"</span>,
-       y <span class='op'>=</span> <span class='st'>"Instrumentalness"</span>,
-       title <span class='op'>=</span> <span class='st'>"This Plot Isn't Helping Us Understand the Association\nBetween Danceability &amp; Instrumentalness Much"</span>,
-       subtitle <span class='op'>=</span> <span class='st'>"Instrumentalness is Skewed With Lots of Values Near 0"</span>
-       <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
-        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
-        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
-        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
-        axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span>,
-        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<p><img src="spotify-api-r_files/figure-html5/traditional%20scatter%20plot%20looking%20at%20danceability%20and%20instrumentalness-1.png" width="624" /></p>
-</div>
-<h2 id="using-a-dot-plot-where-the-other-variable-is-the-colorfill-is-one-alternative">Using a Dot Plot Where the Other Variable is the Color/Fill Is One Alternative</h2>
-<p>One idea I’ve played with a bit is using a dot plot where dot placement is determined by the ~normally distributed variable and the color of the dots is determined by the more skewed variable.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> As you can see below, there are low and higher levels of instrumentalness throughout the distribution of danceability. I think this kind of plot has definite weaknesses<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> and I think it can be a decent alternative to the traditional scatter plot when one variable is incredibly skewed.</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>top_ten_df</span> <span class='op'>%&gt;%</span> 
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>danceability</span>, color <span class='op'>=</span> <span class='va'>instrumentalness</span>, fill <span class='op'>=</span> <span class='va'>instrumentalness</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='http://mjskay.github.io/ggdist/reference/geom_dotsinterval.html'>geom_dots</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_color_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span>, guide <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_fill_viridis_c</span><span class='op'>(</span>option <span class='op'>=</span> <span class='st'>"plasma"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_dark</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Danceability"</span>,
-       y <span class='op'>=</span> <span class='st'>""</span>,
-       title <span class='op'>=</span> <span class='st'>"We See High and Low Levels of Instrumentalness\nThroughout Danceability Distribution"</span>,
-       fill <span class='op'>=</span> <span class='st'>"Instrumentalness"</span>
-       <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>theme</span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-          legend.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
-        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
-        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
-        axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+        panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
         plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> 
 </code></pre>
 </div>
 </details>
-<p><img src="spotify-api-r_files/figure-html5/using%20dot%20plot%20version%20of%20looking%20at%20an%20association%20between%20variables-1.png" width="624" /></p>
+<p><img src="predictbrycecanyondemand_files/figure-html5/look%20at%20visits%20just%20in%202019-1.png" width="624" /></p>
 </div>
-<h2 id="conclusion">Conclusion</h2>
-<p>This post demonstrated how to use the Spotify API to figure out who your top artists are and make an alternative visualization when one of the variables you care about is really skewed. I really enjoyed this process, and I know I’m only scratching the surface of what this API can do. I’m looking forward to finding out more fun ways to dig into Spotify data, and if you have any ideas please <a href="https://twitter.com/mcmullarkey">tweet them at me</a>!</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Even 2020<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> appears to have a similar seasonal pattern.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>acadia</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>date</span> <span class='op'>&gt;</span> <span class='st'>"2019-12-01"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>date</span>, <span class='va'>visitors</span>, color <span class='op'>=</span> <span class='st'>"#D5552C"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_dark</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
+       y <span class='op'>=</span> <span class='st'>"# of Visitors"</span>,
+       title <span class='op'>=</span> <span class='st'>"The Overall Pattern of Visitors in 2020 Looks Similar"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>""</span>
+       <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>comma</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+        legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+        text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"orbitron"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>11</span><span class='op'>)</span>,
+        panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>,
+        plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+</details>
+<p><img src="predictbrycecanyondemand_files/figure-html5/look%20at%20visits%20just%20in%202020-1.png" width="624" /></p>
+</div>
+<p>But what about forecasting visitors beyond where we have data? It’s time to switch to Python. <br> <br> There are great options for time series forecasting in R<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> just like there are good visualization options in Python.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> I’m not claiming I’m making switches between the languages that would be optimal for everyone, so feel free to use your favorite tools for each task! <br> <br> First, we don’t need to start from scratch! We can call the data we tidied in R, <code>acadia</code>, within the python chunk by calling <code>r.acadia</code>. Reticulate is pretty great. Still, even though we tidied the data in R we need to put some finishing touches on the Pandas DataFrame using Python. If you’re interested in the technical details, check out this footnote.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separating feature and labels for AutoARIMA</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Note that if we try to modify r.acadia directly that won&#39;t work consistently, so save as different object</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> r.acadia</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#df.info()</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting date to period for later sktime forecast</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&quot;date&quot;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&quot;date&quot;</span>]).dt.to_period()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting date to index</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">&quot;date&quot;</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting Pandas series we&#39;ll use for sktime forecast</span></span></code></pre></div>
+</details>
+<pre><code>         visitors
+date             
+1979-01    6011.0
+1979-02    5243.0
+1979-03   11165.0
+1979-04  219351.0
+1979-05  339416.0
+...           ...
+2020-08  681746.0
+2020-09  500320.0
+2020-10  480859.0
+2020-11   76251.0
+2020-12   21260.0
+
+[504 rows x 1 columns]</code></pre>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.loc[ :, <span class="st">&quot;visitors&quot;</span>]</span></code></pre></div>
+</details>
+</div>
+<p>Then we’re going to create a simple Auto ARIMA forecast for the monthly visitors to Acadia over the next year using <code>sktime</code> in Python. This forecast is mostly for demonstration purposes so we aren’t going to any hardcore model comparison or tuning. But we easily could within this framework if we wanted to! If you’re interested in some technical considerations for more complicated time series forecasts check out this footnote.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>forecaster <span class="op">=</span> AutoARIMA(sp <span class="op">=</span> <span class="dv">12</span>, suppress_warnings<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># forecaster</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>forecaster.fit(y)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals and predictions</span></span></code></pre></div>
+</details>
+<pre><code>AutoARIMA(sp=12, suppress_warnings=True)</code></pre>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>predictions_series, conf_int_df <span class="op">=</span> forecaster.predict(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    fh <span class="op">=</span> np.arange(<span class="dv">1</span>, h<span class="op">+</span><span class="dv">1</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    return_pred_int<span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    alpha <span class="op">=</span> <span class="fl">0.05</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into data frame</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> pd.concat([y, predictions_series, conf_int_df], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>ret.columns <span class="op">=</span> [<span class="st">&quot;value&quot;</span>, <span class="st">&quot;prediction&quot;</span>,<span class="st">&quot;ci_lo&quot;</span>,<span class="st">&quot;ci_hi&quot;</span>]</span></code></pre></div>
+</details>
+</div>
+<p>Now typically we’d visualize the resulting time series forecast using Python. However, the default-ish plot is pretty disappointing.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize time series and my forecast</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert index to int64 from range object so they can be plotted together</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>y.index <span class="op">=</span> <span class="bu">list</span>(y.index)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating matplotlib plot showing forecast</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">&quot;dark_background&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plot_series(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  y,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  predictions_series,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conf_int_df[&quot;lower&quot;],</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conf_int_df[&quot;upper&quot;])</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+</details>
+<p><img src="predictbrycecanyondemand_files/figure-html5/plot%20time%20series%20forecast-1.png" width="1536" /></p>
+</div>
+<p>Sure, it could be much worse, but it doesn’t feel like we’re playing to Python’s strengths right now<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> <br> <br> Let’s head back to R. We can access the <code>ret</code> object of predictions we created using Python within our R chunk by using <code>py$ret</code>. <br> <br> From there I can wrangle the data and create a great looking table with <code>gt</code>. I highly recommend checking out <a href="https://www.youtube.com/watch?v=z0UGmMOxl-c" target="_blank">this video</a> if you want to walk through how to make better tables.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='va'>py</span><span class='op'>$</span><span class='va'>ret</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>prediction</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>value</span>, <span class='va'>prediction</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jan"</span>,<span class='st'>"Feb"</span>,<span class='st'>"Mar"</span>,<span class='st'>"Apr"</span>,<span class='st'>"May"</span>,<span class='st'>"Jun"</span>,<span class='st'>"Jul"</span>,<span class='st'>"Aug"</span>,<span class='st'>"Sept"</span>,<span class='st'>"Oct"</span>,<span class='st'>"Nov"</span>,<span class='st'>"Dec"</span><span class='op'>)</span>,
+         prediction <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>prediction</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span><span class='op'>(</span><span class='va'>acadia</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>date</span> <span class='op'>&gt;</span> <span class='st'>"2019-12-01"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span>visitors_2020 <span class='op'>=</span> <span class='va'>visitors</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>rowname_col <span class='op'>=</span> <span class='st'>"value"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_header.html'>tab_header</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Using `R` &amp; `Python` Together to Predict Acadia Visitors"</span><span class='op'>)</span>,
+    subtitle <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Forecasting Number of Visitors Each Month of **2021**"</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/opt_align_table_header.html'>opt_align_table_header</a></span><span class='op'>(</span>align <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/cols_label.html'>cols_label</a></span><span class='op'>(</span>
+    prediction <span class='op'>=</span> <span class='st'>"Predicted # of Visitors 2021"</span>,
+    visitors_2020 <span class='op'>=</span> <span class='st'>"Actual # of Visitors 2020"</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/fmt_number.html'>fmt_number</a></span><span class='op'>(</span>
+    columns <span class='op'>=</span> <span class='fu'>where</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span>,
+    decimals <span class='op'>=</span> <span class='fl'>0</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/cols_width.html'>cols_width</a></span><span class='op'>(</span>
+    <span class='va'>value</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>120</span><span class='op'>)</span>,
+    <span class='va'>prediction</span> <span class='op'>~</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>240</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_source_note.html'>tab_source_note</a></span><span class='op'>(</span>
+    source_note <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Data wrangled in `R` and predictions created in `Python`"</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_footnote.html'>tab_footnote</a></span><span class='op'>(</span>
+    footnote <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"2021 data not yet available"</span><span class='op'>)</span>,
+    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_title.html'>cells_title</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_footnote.html'>tab_footnote</a></span><span class='op'>(</span>
+    footnote <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Our predictions capture how seasonal visitors are"</span><span class='op'>)</span>,
+    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_stub.html'>cells_stub</a></span><span class='op'>(</span>rows <span class='op'>=</span> <span class='st'>"Jul"</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span>
+    locations <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/cells_body.html'>cells_body</a></span><span class='op'>(</span>
+      columns <span class='op'>=</span> <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, rows <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sept"</span>,<span class='st'>"Oct"</span><span class='op'>)</span>
+      <span class='op'>)</span>,
+    style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cell_fill.html'>cell_fill</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#D5552C"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cell_text.html'>cell_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/janitor/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_stubhead.html'>tab_stubhead</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Month"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div id="dggxtwcfpf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dggxtwcfpf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dggxtwcfpf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dggxtwcfpf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dggxtwcfpf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dggxtwcfpf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dggxtwcfpf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dggxtwcfpf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dggxtwcfpf .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dggxtwcfpf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dggxtwcfpf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dggxtwcfpf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dggxtwcfpf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dggxtwcfpf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dggxtwcfpf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dggxtwcfpf .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dggxtwcfpf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dggxtwcfpf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dggxtwcfpf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dggxtwcfpf .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dggxtwcfpf .gt_left {
+  text-align: left;
+}
+
+#dggxtwcfpf .gt_center {
+  text-align: center;
+}
+
+#dggxtwcfpf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dggxtwcfpf .gt_font_normal {
+  font-weight: normal;
+}
+
+#dggxtwcfpf .gt_font_bold {
+  font-weight: bold;
+}
+
+#dggxtwcfpf .gt_font_italic {
+  font-style: italic;
+}
+
+#dggxtwcfpf .gt_super {
+  font-size: 65%;
+}
+
+#dggxtwcfpf .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;">
+  <colgroup>
+    <col style="width:120px;"/>
+    <col style="width:240px;"/>
+    <col/>
+  </colgroup>
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>Using <code>R</code> &amp; <code>Python</code> Together to Predict Acadia Visitors<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Forecasting Number of Visitors Each Month of <strong>2021</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Month</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Predicted # of Visitors 2021</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Actual # of Visitors 2020</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left gt_stub">Jan</td>
+<td class="gt_row gt_right">32,408</td>
+<td class="gt_row gt_right">12,640</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Feb</td>
+<td class="gt_row gt_right">23,386</td>
+<td class="gt_row gt_right">13,459</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Mar</td>
+<td class="gt_row gt_right">46,030</td>
+<td class="gt_row gt_right">28,539</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Apr</td>
+<td class="gt_row gt_right">73,112</td>
+<td class="gt_row gt_right">55,713</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">May</td>
+<td class="gt_row gt_right">145,726</td>
+<td class="gt_row gt_right">103,120</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Jun</td>
+<td class="gt_row gt_right">263,247</td>
+<td class="gt_row gt_right">201,156</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Jul<sup class="gt_footnote_marks">2</sup></td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">533,507</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">493,971</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Aug</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">666,088</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">681,746</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Sept</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">509,171</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">500,320</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Oct</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">458,180</td>
+<td class="gt_row gt_right" style="background-color: #D5552C; color: #000000;">480,859</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Nov</td>
+<td class="gt_row gt_right">93,474</td>
+<td class="gt_row gt_right">76,251</td></tr>
+    <tr><td class="gt_row gt_left gt_stub">Dec</td>
+<td class="gt_row gt_right">42,382</td>
+<td class="gt_row gt_right">21,260</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="3">Data wrangled in <code>R</code> and predictions created in <code>Python</code></td>
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          2021 data not yet available
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Our predictions capture how seasonal visitors are
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<h1 id="conclusion">Conclusion</h1>
+<p>I had a lot of fun exploring how R and Python could work together on one project! I’m looking forward to further exploring how to bring the best out of both languages together. If you have any ideas for how to do that please <a href="https://twitter.com/mcmullarkey" target="_blank">tweet them at me.</a> If you’re interested in other projects like this feel free to check out the <a href="https://mcmullarkey.github.io/mcm-blog/" target="_blank">rest of my blog.</a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>Otherwise your app’s api will be exposed which isn’t great for security purposes<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Like we’ll be doing in this post!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>If you’re interested in learning more about map functions in R (they’re life changing!) check out this great resource from Jenny Bryan <a href="https://jennybc.github.io/purrr-tutorial/ls01_map-name-position-shortcuts.html" class="uri">https://jennybc.github.io/purrr-tutorial/ls01_map-name-position-shortcuts.html</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>I’ve exported its output as a gt table in this case, but most of the time you can just run skim() and look at the output inline. It just happens to not look as good as I’d like it to in a distill blog post<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>I love Vausudeva, and they’re an instrumental band I primarily listen to while I’m working<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>To be clear, this isn’t a causal model, we’re just seeing how much variance danceability and instrumentalness share across my top artists’ tracks<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>Knowing the association between danceability and the log+1 (since log of 0 is undefined) of instrumentalness is a lot trickier to translate into other knowledge that might be helpful for us<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>In this case instrumentalness<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>I’m especially concerned how it would translate at larger sample sizes<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p><a href="https://www.youtube.com/watch?v=nin-fiNz50M" class="uri">https://www.youtube.com/watch?v=nin-fiNz50M</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Stuff that isn’t well suited for SQL (Please don’t yell at me)<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>R: great statistical packages, awesome community support, etc. Python: more built out support for prediction problems, easier to put into production, etc.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Read: nonexistent<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>You could also check out Quarto which is like RStudio/Jupyter Notebooks but language neutral <a href="https://quarto.org/" class="uri">https://quarto.org/</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>You can find resources on how to create this file here: <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually" class="uri">https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>The closest national park to me<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>You’ll need to go to “Select Field Name(s)” on the left side of the screen and select “Recreation Visits” from the dropdown menu to reproduce these analyses<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>We’ll see a more extensive gt example later in the post<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>The last year we have data<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>I’m partial to <code>modeltime</code><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>Hello <code>seaborn</code> and <code>plotnine</code> (admittedly a ggplot2 port, though no R depends)<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>We need to set the date variable to period and set it as the index of the pandas dataframe so we can get sensible output from our sktime forecast later<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>I originally conisdered using Blocked Time Series Splits cross-validation a la this example: <a href="https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/" class="uri">https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/</a> However, this resource recommends using AIC over cross-validation of any kind, especially in smaller samples <a href="https://stats.stackexchange.com/questions/139175/aic-versus-cross-validation-in-time-series-the-small-sample-case" class="uri">https://stats.stackexchange.com/questions/139175/aic-versus-cross-validation-in-time-series-the-small-sample-case</a> I ultimately went with a much simpler forecast to keep this post a manageable length, but you can check out this post that goes into more detail of how to build out an Auto ARIMA forecast <a href="https://betterprogramming.pub/using-auto-arima-with-python-e482e322f430" class="uri">https://betterprogramming.pub/using-auto-arima-with-python-e482e322f430</a> If we want a general purpose example of time series forecasting with sktime you can check out the documentation example here <a href="https://www.sktime.org/en/stable/examples/01_forecasting.html#section_1_1" class="uri">https://www.sktime.org/en/stable/examples/01_forecasting.html#section_1_1</a> <a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>Or at the very least not my strengths within Python!<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

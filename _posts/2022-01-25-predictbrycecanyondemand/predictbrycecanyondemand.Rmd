@@ -1,0 +1,376 @@
+---
+title: "Using R and Python Together to Forecast Visitors to Acadia National Park"
+description: |
+  R and Python can be friends
+author:
+  - name: Michael Mullarkey, PhD (Click to return to my website)
+    url: https://mcmullarkey.github.io
+date: 2022-01-25
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+# I Don't Wanna Fight No More^[https://www.youtube.com/watch?v=nin-fiNz50M]
+
+Nothing gets data people up in the morning like a good language war. R vs. Python is one of the more common ones, and I get it. They often serve similar purposes for data science^[Stuff that isn't well suited for SQL (Please don't yell at me)] and each have definite strengths.^[R: great statistical packages, awesome community support, etc. Python: more built out support for prediction problems, easier to put into production, etc.] <br>
+<br>
+The good news is at least some data scientists know a little of both languages and could take advantage of both languages' strengths given the right opportunities. This post will explore how to play to the strengths of R and Python to forecast visitors to Acadia National Park.
+
+# Getting Our Environment Set Up
+
+Setting up our environment is at least half the battle. Until recently I was almost exclusively using [Google Colab](https://colab.research.google.com/){target="_blank"} for Python dev because it makes environment setup trivial.^[Read: nonexistent] But to create this blog post I needed R and Python to work within the RStudio IDE on my local machine.^[You could also check out Quarto which is like RStudio/Jupyter Notebooks but language neutral https://quarto.org/] <br>
+<br>
+Luckily the `reticulate` [package](https://rstudio.github.io/reticulate/index.html){target="_blank"} allows us to interface with Python from RStudio. They have a great [tutorial article](https://rstudio.github.io/reticulate/articles/versions.html){target="_blank"} on how to connect to your preferred version of Python. There are lots of options for how to sync up RStudio and Python! <br>
+<br>
+I have found it easiest to create a project-specific `conda` environment using a .yml file once,^[You can find resources on how to create this file here: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually] then call that environment with `use_condaenv()` each time I open the project. Regardless of what technique you use to interface with Python you can use `py_config()` to double check you're pointing at the version of Python you want.
+
+```{r set up python via reticulate using yml file, code_folding = FALSE}
+
+library(reticulate)
+
+# Only run this once to create the environment
+# conda_create("nps-reticulate-yml", environment = "nps_conda_environment.yml")
+
+use_condaenv("nps-reticulate-yml")
+
+# Commented out so I don't show a lot of info on my computer/paths
+# py_config()
+
+```
+
+Once I set up the environment I start with my Python imports...
+
+```{python load python impports, code_folding = FALSE}
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sktime.forecasting.arima import AutoARIMA
+from sktime.utils.plotting import plot_series
+from sktime.forecasting.model_selection import temporal_train_test_split
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import ElasticNet
+from sklearn.pipeline import make_pipeline
+from sktime.transformations.panel.tsfresh import TSFreshFeatureExtractor
+from sktime.datasets import load_arrow_head, load_basic_motions
+
+
+```
+
+And then load my R packages.
+
+```{r load r packages, code_folding = FALSE}
+
+library(tidyverse) # For tidying/plotting
+library(janitor) # For help cleaning
+library(lubridate) # For working with dates
+library(gt) # Better tables
+library(showtext) # Custom fonts for plots
+library(scales) # For adding different scales
+
+```
+
+# Load and Tidy Our Data
+
+I'm going to use R to load and tidy the data. I got the data for monthly visitors to Acadia National Park^[The closest national park to me] since 1979 from the National Parks Service. Their tables are a bit weird and resistant to being pulled via a web scraper like `rvest` so I ended up downloading the data as a .csv from [here](https://irma.nps.gov/STATS/SSRSReports/Park%20Specific%20Reports/Visitation%20by%20Month?Park=ACAD){target="_blank"} - though check this footnote^[You'll need to go to "Select Field Name(s)" on the left side of the screen and select "Recreation Visits" from the dropdown menu to reproduce these analyses] for necessary details. I'm using a minimal gt table to show what the tidied data looks like now.^[We'll see a more extensive gt example later in the post]  
+
+```{r import and tidy acadia data}
+
+acadia_init <- read_csv("Visitation by Month.csv", skip = 2) %>% 
+  clean_names()
+
+acadia <- acadia_init %>% 
+  pivot_longer(
+    cols = -year,
+    names_to = "month",
+    values_to = "visitors"
+  ) %>% 
+  unite(date, year:month, sep = "-") %>% 
+  mutate(
+    date = ym(date)
+    ) %>%
+  arrange(date) 
+
+head(acadia) %>% 
+  gt()
+
+```
+
+# Visualizing Monthly Visits to Acadia Since 1979
+
+We're sticking with `R` for now and creating a few ggplots. Let's start with the full dataset and see how monthly visitors fluctuate.
+
+```{r looking at visits to acadia over entire date range}
+
+font_add_google(name = "Orbitron",
+                family = "orbitron")
+
+showtext::showtext_auto()
+
+acadia %>% 
+ggplot(aes(date, visitors, color = "#D5552C")) +
+  geom_line() +
+  theme_dark() +
+  labs(x = "",
+       y = "# of Visitors",
+       title = "Visits to Acadia National Park are Highly Seasonal",
+       subtitle = ""
+       ) +
+  scale_y_continuous(label = comma) +
+    theme(plot.background = element_rect(fill = "black"),
+        legend.position = "none",
+        text = element_text(family = "orbitron", color = "white", size = 11),
+        panel.background = element_rect(fill = "black"),
+        axis.text = element_text(color = "white"),
+        axis.text.x = element_text(angle = 25),
+        plot.title.position = "plot") 
+
+```
+This data looks highly seasonal to say the least! If you're not familiar with Acadia it's in the far northeast of the US, so the winters are *harsh*. We can see this understandable seasonality even more starkly if we zoom in on the most recent non-pandemic-marred year.
+
+```{r look at visits just in 2019}
+
+acadia %>% 
+filter(date > "2018-12-01" & date < "2020-01-01") %>% 
+ggplot(aes(date, visitors, color = "#D5552C")) +
+  geom_line() +
+  theme_dark() +
+  labs(x = "",
+       y = "# of Visitors",
+       title = "Even Easier to See Seasonality When We Look at 2019",
+       subtitle = ""
+       ) +
+  scale_y_continuous(label = comma) +
+    theme(plot.background = element_rect(fill = "black"),
+        legend.position = "none",
+        text = element_text(family = "orbitron", color = "white", size = 11),
+        panel.background = element_rect(fill = "black"),
+        axis.text = element_text(color = "white"),
+        axis.text.x = element_text(angle = 25),
+        plot.title.position = "plot") 
+
+```
+Even 2020^[The last year we have data] appears to have a similar seasonal pattern.
+
+```{r look at visits just in 2020}
+
+acadia %>% 
+filter(date > "2019-12-01") %>% 
+ggplot(aes(date, visitors, color = "#D5552C")) +
+  geom_line() +
+  theme_dark() +
+  labs(x = "",
+       y = "# of Visitors",
+       title = "The Overall Pattern of Visitors in 2020 Looks Similar",
+       subtitle = ""
+       ) +
+  scale_y_continuous(label = comma) +
+    theme(plot.background = element_rect(fill = "black"),
+        legend.position = "none",
+        text = element_text(family = "orbitron", color = "white", size = 11),
+        panel.background = element_rect(fill = "black"),
+        axis.text = element_text(color = "white"),
+        axis.text.x = element_text(angle = 25),
+        plot.title.position = "plot") 
+
+```
+But what about forecasting visitors beyond where we have data? It's time to switch to Python. <br> 
+<br>
+There are great options for time series forecasting in R^[I'm partial to `modeltime`] just like there are good visualization options in Python.^[Hello `seaborn` and `plotnine` (admittedly a ggplot2 port, though no R depends)] I'm not claiming I'm making switches between the languages that would be optimal for everyone, so feel free to use your favorite tools for each task! <br>
+<br>
+First, we don't need to start from scratch! We can call the data we tidied in R, `acadia`, within the python chunk by calling `r.acadia`. Reticulate is pretty great. Still, even though we tidied the data in R we need to put some finishing touches on the Pandas DataFrame using Python. If you're interested in the technical details, check out this footnote.^[We need to set the date variable to period and set it as the index of the pandas dataframe so we can get sensible output from our sktime forecast later] 
+
+```{python wrangling for forecasting}
+
+# Separating feature and labels for AutoARIMA
+
+#Note that if we try to modify r.acadia directly that won't work consistently, so save as different object
+
+df = r.acadia
+
+#df.info()
+
+# Converting date to period for later sktime forecast
+
+df["date"] = pd.to_datetime(df["date"]).dt.to_period()
+
+# Setting date to index
+
+df.set_index("date")
+
+# Getting Pandas series we'll use for sktime forecast
+
+y = df.loc[ :, "visitors"]
+
+```
+
+Then we're going to create a simple Auto ARIMA forecast for the monthly visitors to Acadia over the next year using `sktime` in Python. This forecast is mostly for demonstration purposes so we aren't going to any hardcore model comparison or tuning. But we easily could within this framework if we wanted to! If you're interested in some technical considerations for more complicated time series forecasts check out this footnote.^[I originally conisdered using Blocked Time Series Splits cross-validation a la this example: https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/ However, this resource recommends using AIC over cross-validation of any kind, especially in smaller samples https://stats.stackexchange.com/questions/139175/aic-versus-cross-validation-in-time-series-the-small-sample-case I ultimately went with a much simpler forecast to keep this post a manageable length, but you can check out this post that goes into more detail of how to build out an Auto ARIMA forecast https://betterprogramming.pub/using-auto-arima-with-python-e482e322f430 If we want a general purpose example of time series forecasting with sktime you can check out the documentation example here https://www.sktime.org/en/stable/examples/01_forecasting.html#section_1_1 ]
+
+```{python creating autoarima forecast}
+
+forecaster = AutoARIMA(sp = 12, suppress_warnings= True)
+# forecaster
+
+forecaster.fit(y)
+
+# Confidence intervals and predictions
+h = 12
+predictions_series, conf_int_df = forecaster.predict(
+    fh = np.arange(1, h+1),
+    return_pred_int= True,
+    alpha = 0.05)
+
+# Combine into data frame
+
+ret = pd.concat([y, predictions_series, conf_int_df], axis = 1)
+ret.columns = ["value", "prediction","ci_lo","ci_hi"]
+
+```
+
+Now typically we'd visualize the resulting time series forecast using Python. However, the default-ish plot is pretty disappointing.
+
+```{python plot time series forecast}
+
+# Visualize time series and my forecast
+
+# Convert index to int64 from range object so they can be plotted together
+
+y.index = list(y.index)
+
+# Creating matplotlib plot showing forecast
+
+plt.style.use("dark_background")
+
+fig = plot_series(
+  y,
+  predictions_series,
+  )
+  # conf_int_df["lower"],
+  # conf_int_df["upper"])
+
+plt.grid(True)
+plt.show()
+
+
+```
+
+Sure, it could be much worse, but it doesn't feel like we're playing to Python's strengths right now^[Or at the very least not my strengths within Python!] <br>
+<br>
+Let's head back to R. We can access the `ret` object of predictions we created using Python within our R chunk by using `py$ret`. <br>
+<br>
+From there I can wrangle the data and create a great looking table with `gt`. I highly recommend checking out [this video](https://www.youtube.com/watch?v=z0UGmMOxl-c){target="_blank"} if you want to walk through how to make better tables. 
+
+```{r create fancy predictions table}
+
+as_tibble(py$ret) %>% 
+  filter(!is.na(prediction)) %>% 
+  select(value, prediction) %>% 
+  mutate(value = c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"),
+         prediction = as.integer(prediction)) %>% 
+  bind_cols(acadia %>% 
+filter(date > "2019-12-01") %>% select(visitors_2020 = visitors)) %>% 
+  gt(rowname_col = "value") %>% 
+  tab_header(
+    title = md("Using `R` & `Python` Together to Predict Acadia Visitors"),
+    subtitle = md("Forecasting Number of Visitors Each Month of **2021**")
+  ) %>% 
+  opt_align_table_header(align = "left") %>% 
+  cols_label(
+    prediction = "Predicted # of Visitors 2021",
+    visitors_2020 = "Actual # of Visitors 2020"
+  ) %>% 
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 0
+  ) %>% 
+  cols_width(
+    value ~ px(120),
+    prediction ~ px(240)
+  ) %>% 
+  tab_source_note(
+    source_note = md("Data wrangled in `R` and predictions created in `Python`")
+  ) %>%
+  tab_footnote(
+    footnote = md("2021 data not yet available"),
+    locations = cells_title()
+  ) %>% 
+  tab_footnote(
+    footnote = md("Our predictions capture how seasonal visitors are"),
+    locations = cells_stub(rows = "Jul")
+  ) %>%
+  tab_style(
+    locations = cells_body(
+      columns = everything(), rows = c("Jul", "Aug", "Sept","Oct")
+      ),
+    style = list(
+      cell_fill(color = "#D5552C"),
+      cell_text(color = "black"))
+  ) %>% 
+  tab_stubhead(label = md("Month"))
+  
+
+```
+
+# Conclusion
+
+I had a lot of fun exploring how R and Python could work together on one project! I'm looking forward to further exploring how to bring the best out of both languages together. If you have any ideas for how to do that please [tweet them at me.](https://twitter.com/mcmullarkey){target="_blank"} If you're interested in other projects like this feel free to check out the [rest of my blog.](https://mcmullarkey.github.io/mcm-blog/){target="_blank"}
+
+```{python graveyard code, include = FALSE}
+
+# Creating training and testing sets
+
+# y_train, y_test = temporal_train_test_split(y, test_size = 36)
+# X_train, X_test = temporal_train_test_split(X, test_size = 36)
+# X_train.reset_index(drop = True)
+# 
+# # Setting up blocked time series split
+# 
+# class BlockingTimeSeriesSplit():
+#   def __init__(self, n_splits):
+#         self.n_splits = n_splits
+#   
+#   def get_n_splits(self, X, y, groups):
+#         return self.n_splits
+#   
+#   def split(self, X, y=None, groups=None):
+#         n_samples = len(X)
+#         k_fold_size = n_samples // self.n_splits
+#         indices = np.arange(n_samples)
+#         
+#         margin = 0
+#         for i in range(self.n_splits):
+#             start = i * k_fold_size
+#             stop = start + k_fold_size
+#             mid = int(0.8 * (stop - start)) + start
+#             yield indices[start: mid], indices[mid + margin: stop]
+# 
+# # This currently isn't working... Having difficulty with the resmapling to period etc.
+# 
+# X = df.loc[ :, "date"]
+# 
+# model = AutoARIMA(sp = 12, suppress_warnings = True)
+# 
+# # Setting up blocked time series cross-validation
+# 
+# btscv = TimeSeriesSplit(n_splits = 5)
+# 
+# # Looking at cross-validation performance
+# 
+# scores = cross_val_score(model, X_train, y_train, cv=btscv, scoring = "neg_root_mean_squared_error")
+# 
+# # Print performance
+# 
+# print("Loss: {0:.3f} (+/- {1:.3f})".format(scores.mean(), scores.std()))
+# 
+# type(X_train)
+
+```
+
